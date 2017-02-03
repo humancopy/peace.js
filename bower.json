@@ -1,0 +1,13 @@
+{
+  "name": "peace.js",
+  "homepage": "https://humancopy.github.io/peace.js/",
+  "authors": [
+    "humancopy <info@humancopy.net>"
+  ],
+  "description": "Spread peace",
+  "main": [
+    "dist/peace.min.js",
+    "dist/peace.min.css"
+  ],
+  "license": "MIT"
+}
