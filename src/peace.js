@@ -49,7 +49,7 @@ var peaceJS;
 
       // Append & set the link element
       paragraph.appendChild(link_node);
-      link_node.href = 'http://humancopy.net/peace-js.html';
+      link_node.href = 'https://humancopy.github.io/peace.js';
       link_node.appendChild(document.createTextNode(peace.join(', ')));
 
       // Do we want to show the peace symbol?
