@@ -1,6 +1,6 @@
 # PEACE.JS
 
-Add the following piece of code before the closing ```</body>``` tag on your website to support **PEACE	**:
+Add the following piece of code before the closing ```</body>``` tag on your website to support **PEACE.JS**:
 
 ```html
 <script src="https://humancopy.s3.amazonaws.com/peace-js/peace.min.js" async></script>
