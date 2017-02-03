@@ -58,4 +58,41 @@
       opacity: 0;
     }
   }
+
+  /* Themes */
+  &.black {
+    a,
+    a:visited,
+    a:hover {
+      color: #000;
+    }
+  }
+  &.white {
+    a,
+    a:visited,
+    a:hover {
+      color: #fff;
+    }
+  }
+  &.red {
+    a,
+    a:visited,
+    a:hover {
+      color: #ee0000;
+    }
+  }
+  &.green {
+    a,
+    a:visited,
+    a:hover {
+      color: #00ee00;
+    }
+  }
+  &.blue {
+    a,
+    a:visited,
+    a:hover {
+      color: #0000ee;
+    }
+  }
 }

@@ -24,6 +24,9 @@ var peaceJS;
     // possible options: text, symbol
     options.style = options.style || script_tag.getAttribute('data-style') || 'text';
 
+    // possible options: black, white, green & blue
+    options.theme = options.theme || script_tag.getAttribute('data-theme') || 'black';
+
     var peace      = ['Peace', 'Paz', 'שלום', 'سلام', '平和', 'शांति', 'Paix', 'мир', 'Pace', 'Frieden'],
     target_element = options.target || document.getElementsByTagName('footer')[0] || document.body;
 
@@ -42,7 +45,7 @@ var peaceJS;
       link_node     = document.createElement('A'),
       span_node     = document.createElement('SPAN');
 
-      paragraph.className = 'peace ' + options.style;
+      paragraph.className = 'peace ' + options.style + ' ' + options.theme;
 
       // Append & set the link element
       paragraph.appendChild(link_node);
