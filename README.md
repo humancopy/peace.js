@@ -16,13 +16,15 @@ The default color for the **PEACE.JS** is black. This can be controlled via the 
 <script src="https://humancopy.s3.amazonaws.com/peace-js/peace.min.js" data-theme="blue" async></script>
 ```
 
-## Extra Options
+## Style
 
-By default it will show the word Peace in different languages. If you prefer instead to show a peace symbol simply add the `data-stlye="symbol"` attribute to the script tag:
+By default **PEACE.JS** will show the word Peace in different languages. If you prefer instead to show a peace symbol simply add the `data-stlye="symbol"` attribute to the script tag:
 
 ```html
 <script src="https://humancopy.s3.amazonaws.com/peace-js/peace.min.js" data-style="symbol" async></script>
 ```
+
+## Autoloading
 
 You can also disable the automatic activation of the banner by adding the attribute `data-auto="false"` to the script:
 
@@ -30,4 +32,4 @@ You can also disable the automatic activation of the banner by adding the attrib
 <script src="https://humancopy.s3.amazonaws.com/peace-js/peace.min.js" data-auto="false" async></script>
 ```
 
-You can then activate it by calling the ```peaceJS``` function anywhere in your page or javascript.
+You can then activate it by calling the ```peaceJS()``` function anywhere in your page or javascript.
