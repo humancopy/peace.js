@@ -22,6 +22,9 @@ var peaceJS;
     // Default
     else options.target = script_tag && (script_tag.getAttribute('data-target') || script_tag.parentNode);
 
+    // if the target is a text let's find it
+    if (typeof options.target == 'string' && options.target != '') options.target = document.querySelector(options.target);
+
     // possible options: text, symbol
     options.style = options.style || script_tag.getAttribute('data-style') || 'text';
 
