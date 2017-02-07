@@ -1,14 +1,14 @@
 /**
  * PEACE.js - http://humancopy.net/peace-js.html
  * Peace please, humancopy.net 2017
- * Version 1.1.1
+ * Version 1.1.2
  *
  */
 
 var peaceJS;
 (function() {
 
-  var script_tag = document.querySelector('script[src*="peace-js"]'),
+  var script_tag = document.querySelector('script[src*="peace.js"]'),
   auto_load      = script_tag && (script_tag.getAttribute('data-auto') === null || script_tag.getAttribute('data-auto') === 'true');
 
   peaceJS = function(options) {
