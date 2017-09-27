@@ -39,7 +39,7 @@ You can also disable the automatic activation of the banner by adding the attrib
 The ```peaceJS()``` function accepts an optional argument of either a hash of options, DOM element, DOM selector or jQuery object. Any option passed to ```peaceJS()``` has precedence over what was defined on the ```<script>``` tag.
 
 ```html
-<script src="https://cdn.jsdelivr.net/peace.js/1.1.4/peace.min.js" data-auto="false" data-theme="green" async></script>
+<script src="https://cdn.jsdelivr.net/gh/humancopy/peace.js@1.1.4/dist/peace.min.js" data-auto="false" data-theme="green" async></script>
 
 <script>
 // Default behaviour

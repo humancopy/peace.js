@@ -38,7 +38,7 @@ var peaceJS;
     if (target_element) {
       // Load the CSS
       link       = document.createElement('link');
-      link.href  = 'https://cdn.jsdelivr.net/peace.js/1.1.4/peace.min.css';
+      link.href  = 'https://cdn.jsdelivr.net/gh/humancopy/peace.js@1.1.4/dist/peace.min.css';
       link.type  = 'text/css';
       link.rel   = 'stylesheet';
       link.media = 'screen,print';
