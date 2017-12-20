@@ -15,10 +15,8 @@ var peaceJS;
 
     options = options || {};
 
-    // Got a jQuery object
-    if (typeof jQuery != 'undefined' && options instanceof jQuery) options = {target: options[0]};
-    // Got a DOM element
-    else if (options.nodeType) options = {target: options};
+    // Got a DOM element, array of objects (so get only the first one) or jQuery object
+    if (options.nodeType || (options[0] && options[0].nodeType)) options = {target: options[0] || options};
     // Default
     else options.target = script_tag && (script_tag.getAttribute('data-target') || script_tag.parentNode);
 
