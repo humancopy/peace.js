@@ -1,8 +1,8 @@
 {
   "name": "peace.js",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "description": "Peace please",
-  "main": "dist/peace.min.js",
+  "main": "peace.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
