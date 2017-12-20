@@ -1,7 +1,7 @@
 /**
  * PEACE.js - http://humancopy.net/peace-js.html
  * Peace please, humancopy.net 2017
- * Version 1.1.8
+ * Version 1.1.9
  *
  */
 
@@ -38,7 +38,7 @@ var peaceJS;
     if (target_element) {
       // Load the CSS
       link       = document.createElement('link');
-      link.href  = 'https://cdn.jsdelivr.net/npm/peace.js@1.1.8/dist/peace.min.css';
+      link.href  = 'https://cdn.jsdelivr.net/npm/peace.js@1.1.9/dist/peace.min.css';
       link.type  = 'text/css';
       link.rel   = 'stylesheet';
       link.media = 'screen,print';
