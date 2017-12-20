@@ -1,0 +1,81 @@
+/**
+ * PEACE.js - http://humancopy.net/peace-js.html
+ * Peace please, humancopy.net 2017
+ * Version 1.2.1
+ *
+ */
+
+ /** Ultra Light */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 100;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2");
+}
+.peace {
+  opacity: 0.65;
+  margin: 1.5em 0;
+  font: 100 13px "San Francisco", Helvetica, Arial;
+  text-align: center;
+  position: relative;
+  /* Themes */
+}
+.peace a,
+.peace span {
+  display: inline;
+  cursor: pointer;
+  text-decoration: none;
+  height: 32px;
+  line-height: 32px;
+  vertical-align: middle;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+.peace span {
+  opacity: 1;
+  font-size: 32px;
+  left: 50%;
+  top: 0;
+  position: absolute;
+  margin-left: -16px;
+  z-index: 1;
+}
+.peace.symbol a {
+  opacity: 0;
+  position: relative;
+  z-index: 2;
+}
+.peace.symbol.show a,
+.peace.symbol:hover a {
+  opacity: 1;
+}
+.peace.symbol.show span,
+.peace.symbol:hover span {
+  opacity: 0;
+}
+.peace.black a,
+.peace.black a:hover,
+.peace.black a:visited {
+  color: #000;
+}
+.peace.white a,
+.peace.white a:hover,
+.peace.white a:visited {
+  color: #fff;
+}
+.peace.red a,
+.peace.red a:hover,
+.peace.red a:visited {
+  color: #ee0000;
+}
+.peace.green a,
+.peace.green a:hover,
+.peace.green a:visited {
+  color: #00ee00;
+}
+.peace.blue a,
+.peace.blue a:hover,
+.peace.blue a:visited {
+  color: #0000ee;
+}
