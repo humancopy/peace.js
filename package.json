@@ -1,6 +1,6 @@
 {
   "name": "peace.js",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Peace please",
   "main": "src/peace.js",
   "scripts": {
