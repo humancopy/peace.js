@@ -1,0 +1,22 @@
+{
+  "name": "peace.js",
+  "version": "1.1.6",
+  "description": "Peace please",
+  "main": "src/peace.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humancopy/peace.js.git"
+  },
+  "keywords": [
+    "peace"
+  ],
+  "author": "humancopy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/humancopy/peace.js/issues"
+  },
+  "homepage": "https://github.com/humancopy/peace.js#readme"
+}
