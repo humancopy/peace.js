@@ -1,6 +1,6 @@
 # PEACE.JS
 
-Add the following piece (no pun intended) of code before the closing ```</body>``` tag on your website to promote **PEACE.JS**:
+Add the following piece (~no~ pun intended) of code before the closing ```</body>``` tag on your website to promote **PEACE.JS**:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@1.2.1/peace.min.js" async></script>
