@@ -26,7 +26,7 @@ By default, **PEACE.JS** will be appeneded to the parent element of the ```<scri
 
 ## Themes
 
-The default text color for **PEACE.JS** is black. This can be controlled via the `data-theme` attribute. Possible values are: black, white, green & blue.
+The default text color for **PEACE.JS** is black. This can be controlled via the `data-theme` attribute. Possible values are: `black`, `white`, `green` & `blue`.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@1.2.1/peace.min.js" data-theme="blue" async></script>
@@ -34,7 +34,7 @@ The default text color for **PEACE.JS** is black. This can be controlled via the
 
 ## Style
 
-By default, **PEACE.JS** will show the word Peace in different languages. If you prefer instead to show a peace symbol, simply add the `data-style="symbol"` attribute to the script tag:
+By default, **PEACE.JS** will show the word Peace in different languages. If you prefer instead to show a peace symbol, simply add the `data-style="symbol"` attribute to the script tag. Possible values are: `text`, `symbol`
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@1.2.1/peace.min.js" data-style="symbol" async></script>
