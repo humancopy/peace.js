@@ -18,7 +18,7 @@ By default, **PEACE.JS** will be appeneded to the parent element of the ```<scri
 
 ## Link
 
-**PEACE.JS** will automatically link the generated peace banner to the project's homepage. By default the link will open in a new window. You can either change it to open in the same window or to not have any link at all (why would you want to do that though is beyond me :bemused:). Possible values are: `_blank`, `_self`, `false`
+**PEACE.JS** will automatically link the generated peace banner to the project's homepage. By default the link will open in a new window. You can either change it to open in the same window or to not have any link at all (why would you want to do that though is beyond me :smirk:). Possible values are: anything supported by the [a[target]](https://www.w3schools.com/tags/att_a_target.asp) attribute or `false` to disable the link.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@1.2.1/peace.min.js" data-link="_self" async></script>
