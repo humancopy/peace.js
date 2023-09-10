@@ -59,7 +59,7 @@ var peaceJS;
       paragraph.appendChild(link_node);
       link_node.appendChild(document.createTextNode(peace.join(', ')));
       if (options.link) {
-        link_node.href = 'https://humancopy.github.io/peace.js';
+        link_node.href = 'https://peace.humancopy.net';
         link_node.setAttribute('target', options.link)
       }
 
