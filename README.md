@@ -69,3 +69,7 @@ peaceJS({
 });
 </script>
 ```
+
+## Share peace
+
+Using **PEACE.JS**? Make a pull request to be listed [here](SHARE.md).
