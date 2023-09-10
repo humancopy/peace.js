@@ -25,11 +25,15 @@ var peaceJS;
     // Assume we got a jQuery object
     else if (!options.target.nodeType) options.target = options.target[0];
 
-    // possible options: text, symbol
+    // possible options: text (default), symbol
     options.style = options.style || script_tag.getAttribute('data-style') || 'text';
 
-    // possible options: black, white, green & blue
+    // possible options: black (default), white, green & blue
     options.theme = options.theme || script_tag.getAttribute('data-theme') || 'black';
+
+    // possible options: '_blank' (default), _self, false (no link)
+    options.link = options.link === false || options.link ? options.link : (script_tag.getAttribute('data-link') || '_blank');
+    if (options.link === 'false') options.link = false;
 
     var peace      = ['Peace', 'Paz', 'שלום', 'سلام', '平和', 'शांति', 'Paix', 'мир', 'Pace', 'Frieden'],
     target_element = options.target || document.getElementsByTagName('footer')[0] || document.body;
@@ -53,8 +57,11 @@ var peaceJS;
 
       // Append & set the link element
       paragraph.appendChild(link_node);
-      link_node.href = 'https://humancopy.github.io/peace.js';
       link_node.appendChild(document.createTextNode(peace.join(', ')));
+      if (options.link) {
+        link_node.href = 'https://humancopy.github.io/peace.js';
+        link_node.setAttribute('target', options.link)
+      }
 
       // Do we want to show the peace symbol?
       if (options.style == 'symbol') {
@@ -77,4 +84,3 @@ var peaceJS;
 
   if (auto_load) peaceJS();
 })();
-
