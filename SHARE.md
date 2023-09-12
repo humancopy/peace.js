@@ -1,6 +1,6 @@
 # Share peace
 
-Thank you for sharing the peace! :heart:
+Thank you for sharing peace! :heart:
 
 1. [Symbolika](https://symbolika.com)
 2. [Tribu London](https://tribu.co.uk)
