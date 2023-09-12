@@ -1,7 +1,7 @@
 /**
  * PEACE.js - http://humancopy.net/peace-js.html
  * Peace please, humancopy.net 2017
- * Version 1.2.1
+ * Version 1.3.0
  *
  */
 
@@ -25,11 +25,15 @@ var peaceJS;
     // Assume we got a jQuery object
     else if (!options.target.nodeType) options.target = options.target[0];
 
-    // possible options: text, symbol
+    // possible options: text (default), symbol
     options.style = options.style || script_tag.getAttribute('data-style') || 'text';
 
-    // possible options: black, white, green & blue
+    // possible options: black (default), white, green & blue
     options.theme = options.theme || script_tag.getAttribute('data-theme') || 'black';
+
+    // possible options: '_blank' (default), _self, false (no link)
+    options.link = options.link === false || options.link ? options.link : (script_tag.getAttribute('data-link') || '_blank');
+    if (options.link === 'false') options.link = false;
 
     var peace      = ['Peace', 'Paz', 'שלום', 'سلام', '平和', 'शांति', 'Paix', 'мир', 'Pace', 'Frieden'],
     target_element = options.target || document.getElementsByTagName('footer')[0] || document.body;
@@ -38,7 +42,7 @@ var peaceJS;
     if (target_element) {
       // Load the CSS
       link       = document.createElement('link');
-      link.href  = 'https://cdn.jsdelivr.net/npm/peace.js@1.2.1/peace.min.css';
+      link.href  = 'https://cdn.jsdelivr.net/npm/peace.js@1.3.0/peace.min.css';
       link.type  = 'text/css';
       link.rel   = 'stylesheet';
       link.media = 'screen,print';
@@ -53,8 +57,11 @@ var peaceJS;
 
       // Append & set the link element
       paragraph.appendChild(link_node);
-      link_node.href = 'https://humancopy.github.io/peace.js';
       link_node.appendChild(document.createTextNode(peace.join(', ')));
+      if (options.link) {
+        link_node.href = 'https://peace.humancopy.net';
+        link_node.setAttribute('target', options.link)
+      }
 
       // Do we want to show the peace symbol?
       if (options.style == 'symbol') {
@@ -77,4 +84,3 @@ var peaceJS;
 
   if (auto_load) peaceJS();
 })();
-
