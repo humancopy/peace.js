@@ -57,26 +57,31 @@ a:not([href]) {
 .peace.symbol:hover span {
   opacity: 0;
 }
+.peace.black span,
 .peace.black a,
 .peace.black a:hover,
 .peace.black a:visited {
   color: #000;
 }
+.peace.white span,
 .peace.white a,
 .peace.white a:hover,
 .peace.white a:visited {
   color: #fff;
 }
+.peace.red span,
 .peace.red a,
 .peace.red a:hover,
 .peace.red a:visited {
   color: #ee0000;
 }
+.peace.green span,
 .peace.green a,
 .peace.green a:hover,
 .peace.green a:visited {
   color: #00ee00;
 }
+.peace.blue span,
 .peace.blue a,
 .peace.blue a:hover,
 .peace.blue a:visited {
