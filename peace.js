@@ -9,7 +9,9 @@ var peaceJS;
 (function() {
 
   var script_tag = document.querySelector('script[src*="peace.js"]'),
-  auto_load      = script_tag && (script_tag.getAttribute('data-auto') === null || script_tag.getAttribute('data-auto') === 'true');
+  // Read an attribute of the <script> tag, if there is one
+  attr           = function(name) { return script_tag ? script_tag.getAttribute(name) : null; },
+  auto_load      = script_tag && (attr('data-auto') === null || attr('data-auto') === 'true');
 
   peaceJS = function(options) {
 
@@ -18,21 +20,21 @@ var peaceJS;
     // If options is not an object we assume we got a DOM element (either string, element, jQuery object etc...)
     if (options.constructor != Object) options = {target: options};
 
-    // No target at all, use the parent of the <script> tag
-    if (!options.target) options.target = script_tag && (script_tag.getAttribute('data-target') || script_tag.parentNode);
+    // No target given, use data-target or the parent of the <script> tag
+    if (!options.target) options.target = attr('data-target') || (script_tag && script_tag.parentNode);
     // If the target is a text let's find it
-    else if (typeof options.target == 'string') options.target = document.querySelector(options.target);
+    if (typeof options.target == 'string') options.target = document.querySelector(options.target);
     // Assume we got a jQuery object
-    else if (!options.target.nodeType) options.target = options.target[0];
+    else if (options.target && !options.target.nodeType) options.target = options.target[0];
 
     // possible options: text (default), symbol
-    options.style = options.style || script_tag.getAttribute('data-style') || 'text';
+    options.style = options.style || attr('data-style') || 'text';
 
     // possible options: black (default), white, green & blue
-    options.theme = options.theme || script_tag.getAttribute('data-theme') || 'black';
+    options.theme = options.theme || attr('data-theme') || 'black';
 
     // possible options: '_blank' (default), _self, false (no link)
-    options.link = options.link === false || options.link ? options.link : (script_tag.getAttribute('data-link') || '_blank');
+    options.link = options.link === false || options.link ? options.link : (attr('data-link') || '_blank');
     if (options.link === 'false') options.link = false;
 
     var peace      = ['Peace', 'Paz', 'שלום', 'سلام', '平和', 'शांति', 'Paix', 'мир', 'Pace', 'Frieden'],
@@ -41,7 +43,7 @@ var peaceJS;
     // Do the do if can do
     if (target_element) {
       // Load the CSS
-      link       = document.createElement('link');
+      var link   = document.createElement('link');
       link.href  = 'https://cdn.jsdelivr.net/npm/peace.js@1.3.1/peace.min.css';
       link.type  = 'text/css';
       link.rel   = 'stylesheet';
