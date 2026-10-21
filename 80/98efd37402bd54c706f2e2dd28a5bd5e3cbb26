@@ -1,0 +1,21 @@
+README.md
+  s_b0d56a9ac2cc05::t_b6e7f18a41cc60 55
+peace.js
+  s_b0d56a9ac2cc05::t_b6e7f18a41cc60 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8098efd37402bd54c706f2e2dd28a5bd5e3cbb26",
+  "prompts": {},
+  "sessions": {
+    "s_b0d56a9ac2cc05": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a21f8a3d-f915-4ad9-9f6e-6a6c9791a78d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
