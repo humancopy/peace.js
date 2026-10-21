@@ -75,6 +75,10 @@ peaceJS({
 </script>
 ```
 
+## Hosting it yourself
+
+**PEACE.JS** loads its stylesheet from the same place as the script, by swapping `.js` for `.css`: `peace.js` loads `peace.css`, and `peace.min.js` loads `peace.min.css`. So when you serve the script yourself (or install it with Bower or npm), keep the matching stylesheet next to it. When the script is bundled into another file, or loaded by package name without a file (like `https://cdn.jsdelivr.net/npm/peace.js`), the stylesheet comes from jsDelivr.
+
 ## Development
 
 The tests run **PEACE.JS** in a real browser (Chromium, via [Playwright](https://playwright.dev)), checking the banner's colors on light, dark and see-through pages, and every option. A size test also keeps `peace.js` under its budget once minified and gzipped.

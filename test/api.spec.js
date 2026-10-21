@@ -159,6 +159,47 @@ test.describe('peaceJS()', () => {
       await ready(page);
       await expect(page.locator(`${where} > .peace`)).toHaveCount(1);
       await expect(page.locator('.peace a')).toHaveCSS('color', BLACK);
+      await expect(page.locator('link[rel=stylesheet]')).toHaveAttribute('href', /^https:\/\/cdn\.jsdelivr\.net\/npm\/peace\.js@[\d.]+\/peace\.min\.css$/);
+    });
+  }
+});
+
+// Wherever the script is installed, its stylesheet comes from the same place
+test.describe('stylesheet', () => {
+  const CDN = /^https:\/\/cdn\.jsdelivr\.net\/npm\/peace\.js@[\d.]+\/peace\.min\.css$/;
+  const files = {js: path.join(__dirname, '..', 'peace.js'), css: path.join(__dirname, '..', 'peace.css')};
+  const cases = [
+    // Self-hosted, with the address relative, absolute, or with a query or hash
+    ['peace.js', '/peace.css'],
+    ['/peace.js', '/peace.css'],
+    ['/js/peace.js?v=2', '/js/peace.css?v=2'],
+    ['/js/peace.js#top', '/js/peace.css#top'],
+    ['/bower_components/peace.js/dist/peace.min.js', '/bower_components/peace.js/dist/peace.min.css'],
+    // CDNs, by file name
+    ['https://cdn.jsdelivr.net/npm/peace.js@2.0.0/dist/peace.min.js', 'https://cdn.jsdelivr.net/npm/peace.js@2.0.0/dist/peace.min.css'],
+    ['https://cdn.jsdelivr.net/npm/peace.js@2.0.0/peace.min.js', 'https://cdn.jsdelivr.net/npm/peace.js@2.0.0/peace.min.css'],
+    ['https://cdn.jsdelivr.net/gh/humancopy/peace.js@master/peace.js', 'https://cdn.jsdelivr.net/gh/humancopy/peace.js@master/peace.css'],
+    ['https://unpkg.com/peace.js@2.0.0/dist/peace.min.js', 'https://unpkg.com/peace.js@2.0.0/dist/peace.min.css'],
+    ['https://cdnjs.cloudflare.com/ajax/libs/peace.js/2.0.0/peace.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/peace.js/2.0.0/peace.min.css'],
+    // CDNs, by package name alone, which has no file to swap: jsDelivr
+    ['https://cdn.jsdelivr.net/npm/peace.js', CDN],
+    ['https://cdn.jsdelivr.net/npm/peace.js@2.0.0', CDN],
+    ['https://cdn.jsdelivr.net/npm/peace.js@2', CDN],
+    ['https://cdn.jsdelivr.net/gh/humancopy/peace.js', CDN],
+    ['https://cdn.jsdelivr.net/gh/humancopy/peace.js@master', CDN],
+    ['https://unpkg.com/peace.js', CDN],
+    ['https://unpkg.com/peace.js@2.0.0', CDN],
+  ];
+  for (const [script, stylesheet] of cases) {
+    test(`${script} loads ${stylesheet}`, async ({page, baseURL}) => {
+      // Serve peace.js and peace.css at any of these addresses, other than the jsDelivr fallback the fixture already serves
+      const ours = url => !CDN.test(url.href) && /peace|bower_components|\/js\//.test(url.pathname);
+      await page.route(ours, route => route.fulfill({path: /\.css([?#]|$)/.test(route.request().url()) ? files.css : files.js}));
+      await open(page, {script: `<script src="${script}"></script>`});
+      await ready(page);
+      const href = await page.locator('link[rel=stylesheet]').getAttribute('href');
+      if (stylesheet instanceof RegExp) expect(href).toMatch(stylesheet);
+      else expect(href).toBe(new URL(stylesheet, baseURL).href);
     });
   }
 });
