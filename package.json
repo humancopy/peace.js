@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/humancopy/peace.js/issues"
   },
-  "homepage": "https://github.com/humancopy/peace.js#readme",
+  "homepage": "https://peace.humancopy.net",
   "devDependencies": {
     "@playwright/test": "1.64.1",
     "terser": "5.51.2"
