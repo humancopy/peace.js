@@ -62,6 +62,13 @@
     &.show span {
       opacity: 0;
     }
+
+    // Touch has no hover: let the first tap reach the symbol to reveal the link
+    @media (hover: none) {
+      &:not(.show) a {
+        pointer-events: none;
+      }
+    }
   }
 
   /* Themes */

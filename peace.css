@@ -57,6 +57,11 @@ a:not([href]) {
 .peace.symbol:hover span {
   opacity: 0;
 }
+@media (hover: none) {
+  .peace.symbol:not(.show) a {
+    pointer-events: none;
+  }
+}
 .peace.auto span,
 .peace.auto a,
 .peace.auto a:hover,
