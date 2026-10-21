@@ -1,0 +1,29 @@
+peace.css
+  s_4e4665adc7f8bf::t_ba297191762533 65-70
+README.md
+  s_4e4665adc7f8bf::t_ba297191762533 29,32,35-37,40
+peace.js
+  s_4e4665adc7f8bf::t_49840f7dd6a216 33,36-37
+  s_4e4665adc7f8bf::t_f04205531f6e37 87-102
+  s_4e4665adc7f8bf::t_e85a768f42f03f 106-112,115-116
+  s_4e4665adc7f8bf::t_ee6478b64b6667 113-114
+  s_4e4665adc7f8bf::t_8be6bcfe8781c1 38
+peace.scss
+  s_4e4665adc7f8bf::t_ba297191762533 74-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b6e4b37051e86f372ce506358395707c6d29ed4c",
+  "prompts": {},
+  "sessions": {
+    "s_4e4665adc7f8bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7310c6a6-76cb-43ac-b59b-cf959bfaf3a6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
