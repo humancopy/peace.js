@@ -9,16 +9,31 @@ async function banner(page, attrs) {
   return page.locator('.peace');
 }
 
+// Records every visit to the homepage, from this tab or a new one
+function visits(context) {
+  const urls = [];
+  context.on('request', request => request.url().startsWith(HOME) && urls.push(request.url()));
+  return urls;
+}
+
+// Nothing happening only proves something once a link had time to fire
+async function staysPut(page, context, urls) {
+  await page.waitForTimeout(500);
+  expect(urls).toEqual([]);
+  expect(context.pages()).toHaveLength(1);
+  await expect(page).toHaveURL(PAGE);
+}
+
 test.describe('touch', () => {
   // A touch-only device matches (hover: none)
   test.use({hasTouch: true, isMobile: true});
 
   test('symbol, _blank: the first tap reveals the words, the second opens a new tab', async ({page, context}) => {
+    const urls = visits(context);
     const peace = await banner(page, 'data-style="symbol"');
     await peace.locator('span').tap();
     await expect(peace).toHaveClass(/\bshow\b/);
-    await expect(page).toHaveURL(PAGE);
-    expect(context.pages()).toHaveLength(1);
+    await staysPut(page, context, urls);
 
     const [tab] = await Promise.all([context.waitForEvent('page'), peace.locator('a').tap()]);
     await expect(tab).toHaveURL(`${HOME}/`);
@@ -26,10 +41,11 @@ test.describe('touch', () => {
   });
 
   test('symbol, _self: the first tap reveals the words, the second follows the link', async ({page, context}) => {
+    const urls = visits(context);
     const peace = await banner(page, 'data-style="symbol" data-link="_self"');
     await peace.locator('span').tap();
     await expect(peace).toHaveClass(/\bshow\b/);
-    await expect(page).toHaveURL(PAGE);
+    await staysPut(page, context, urls);
 
     await peace.locator('a').tap();
     await expect(page).toHaveURL(`${HOME}/`);
@@ -37,13 +53,13 @@ test.describe('touch', () => {
   });
 
   test('symbol, data-link="false": taps reveal the words and go nowhere', async ({page, context}) => {
+    const urls = visits(context);
     const peace = await banner(page, 'data-style="symbol" data-link="false"');
     await peace.locator('span').tap();
     await expect(peace).toHaveClass(/\bshow\b/);
 
     await peace.locator('a').tap();
-    await expect(page).toHaveURL(PAGE);
-    expect(context.pages()).toHaveLength(1);
+    await staysPut(page, context, urls);
   });
 
   test('text, _self: a tap follows the link', async ({page}) => {
