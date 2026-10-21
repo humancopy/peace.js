@@ -6,12 +6,15 @@ const CDN_CSS = 'https://cdn.jsdelivr.net/npm/peace.js@*/dist/peace.min.css';
 
 const HOME = 'https://peace.humancopy.net';
 
+// The files tested when a project doesn't pick any
+const FILES = {js: 'peace.js', css: 'peace.css'};
+
 const BLACK ='rgb(0, 0, 0)';
 const WHITE = 'rgb(255, 255, 255)';
 
 const test = base.extend({
   // Which peace.js and peace.css to test, set per project in playwright.config.js
-  files: [{js: 'peace.js', css: 'peace.css'}, {option: true}],
+  files: [FILES, {option: true}],
 
   // One static server per worker
   server: [async ({}, use) => {
@@ -55,7 +58,7 @@ async function open(page, {head = '', body = '', attrs = '', script = `<script s
 
 // The path of the peace.js being tested, like /peace.js or /dist/peace.min.js
 function src() {
-  return '/' + base.info().project.use.files.js;
+  return '/' + (base.info().project.use.files || FILES).js;
 }
 
 // Waits until the banner is styled by peace.css, so "black" is never just the browser default

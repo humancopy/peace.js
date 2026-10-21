@@ -7,7 +7,8 @@
   "unpkg": "dist/peace.min.js",
   "scripts": {
     "build": "node scripts/build.js",
-    "test": "playwright test"
+    "test": "playwright test",
+    "prepublishOnly": "npm test"
   },
   "repository": {
     "type": "git",
