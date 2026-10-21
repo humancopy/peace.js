@@ -5,7 +5,7 @@ const {minify} = require('terser');
 const {test, expect} = require('@playwright/test');
 
 // Minified and gzipped, the way the CDN serves it
-const BUDGET = 1130;
+const BUDGET = 1150;
 
 test('peace.js fits the size budget', async () => {
   const source = fs.readFileSync(path.join(__dirname, '..', 'peace.js'), 'utf8');

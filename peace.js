@@ -8,10 +8,10 @@
 var peaceJS;
 (function(document) {
 
-  var script_tag = document.querySelector('script[src*="peace.js"]'),
+  var script_tag = document.querySelector('script[src*="peace.js"], script[src*="peace.min.js"]'),
   src            = script_tag ? script_tag.src : '',
-  // The script's address with .js swapped for .css, unless it ends in the package name (like /npm/peace.js)
-  stylesheet     = /(npm|unpkg\.com|humancopy)\/peace\.js$/.test(src) ? src : src.replace(/\.js(?=[?#]|$)/, '.css'),
+  // The script's address with .js swapped for .css, unless it's a CDN address by package name (like cdn.jsdelivr.net/npm/peace.js)
+  stylesheet     = /\/\/(cdn\.jsdelivr\.net\/(npm|gh\/humancopy)|unpkg\.com)\/peace\.js([?#]|$)/.test(src) ? src : src.replace(/\.js(?=[?#]|$)/, '.css'),
   // The device's dark mode, where the browser can tell
   dark_mode      = window.matchMedia && matchMedia('(prefers-color-scheme: dark)'),
   // A 1x1 canvas that blends background colours (in any CSS syntax) into one sRGB pixel

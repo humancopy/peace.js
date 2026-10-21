@@ -77,7 +77,7 @@ peaceJS({
 
 ## Hosting it yourself
 
-**PEACE.JS** loads its stylesheet from the same place as the script, by swapping `.js` for `.css`: `peace.js` loads `peace.css`, and `peace.min.js` loads `peace.min.css`. So when you serve the script yourself (or install it with Bower or npm), keep the matching stylesheet next to it. When the script is bundled into another file, or loaded by package name without a file (like `https://cdn.jsdelivr.net/npm/peace.js`), the stylesheet comes from jsDelivr.
+**PEACE.JS** loads its stylesheet from the same place as the script, by swapping `.js` for `.css`: `peace.js` loads `peace.css`, and `peace.min.js` loads `peace.min.css`. So when you serve the script yourself (or install it with Bower or npm), keep the matching stylesheet next to it, and keep the file named `peace.js` or `peace.min.js` so the script can find its own `<script>` tag. When the script is bundled into another file, or loaded by package name without a file (like `https://cdn.jsdelivr.net/npm/peace.js`), the stylesheet comes from jsDelivr.
 
 ## Development
 
