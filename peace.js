@@ -8,7 +8,10 @@
 var peaceJS;
 (function(document) {
 
-  var script_tag = document.querySelector('script[src*="peace.js"]'),
+  var script_tag = document.querySelector('script[src*="peace.js"], script[src*="peace.min.js"]'),
+  src            = script_tag ? script_tag.src : '',
+  // The script's address with .js swapped for .css, unless it's a CDN address by package name (like cdn.jsdelivr.net/npm/peace.js)
+  stylesheet     = /\/\/(cdn\.jsdelivr\.net\/(npm|gh\/humancopy)|unpkg\.com)\/peace\.js([?#]|$)/.test(src) ? src : src.replace(/\.js(?=[?#]|$)/, '.css'),
   // The device's dark mode, where the browser can tell
   dark_mode      = window.matchMedia && matchMedia('(prefers-color-scheme: dark)'),
   // A 1x1 canvas that blends background colours (in any CSS syntax) into one sRGB pixel
@@ -44,7 +47,9 @@ var peaceJS;
     if (target) {
       // Load the CSS
       css.rel  = 'stylesheet';
-      css.href = 'https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.css';
+      // from next to the script (peace.js loads peace.css, peace.min.js loads peace.min.css),
+      // or from jsDelivr when bundled or loaded by package name (like /npm/peace.js or /npm/peace.js@1.4.0)
+      css.href = stylesheet != src ? stylesheet : 'https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.css';
       document.head.appendChild(css);
 
       paragraph.className = 'peace ' + style + ' ' + theme;

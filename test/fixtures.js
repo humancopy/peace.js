@@ -19,7 +19,7 @@ const test = base.extend({
 
   baseURL: async ({server}, use) => use(server.url),
 
-  // Every page answers the CDN stylesheet with the local peace.css, stays offline,
+  // Every page answers the CDN stylesheet (used when peace.js is bundled) with the local peace.css, stays offline,
   // and fails the test on any page error or console warning
   page: async ({context, page, baseURL}, use) => {
     const problems = [], stubbed = new Set();
