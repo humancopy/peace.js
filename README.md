@@ -52,7 +52,7 @@ By default, **PEACE.JS** will show the word Peace in different languages. If you
 
 You can also disable the automatic activation of the banner by adding the attribute `data-auto="false"` to the script. You can then activate it by calling the ```peaceJS()``` function.
 
-The ```peaceJS()``` function accepts an optional argument of either a hash of options, DOM element, DOM selector or jQuery object. Any option passed to ```peaceJS()``` has precedence over what was defined on the ```<script>``` tag.
+The ```peaceJS()``` function accepts an optional argument of either a hash of options, a DOM element or a CSS selector. Any option passed to ```peaceJS()``` has precedence over what was defined on the ```<script>``` tag. Using jQuery? Pass ```$('#footer')[0]``` or the selector string instead of the jQuery object.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" data-auto="false" data-theme="green" data-link="_self" async></script>
@@ -63,9 +63,6 @@ peaceJS();
 
 // Append to #footer in green theme
 peaceJS('#footer');
-
-// Same as above but a jQuery object
-peaceJS($('#footer'));
 
 // Will append to #header, with a blue theme (precedence over green), symbol style
 // and won't link back to the project :(
