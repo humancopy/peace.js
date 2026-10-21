@@ -119,4 +119,17 @@ test.describe('live updates', () => {
     await page.evaluate(() => document.body.classList.add('night'));
     await expectColor(page, WHITE);
   });
+
+  // Sites also flip their dark mode on <html>, by class or by attribute
+  for (const [label, css, flip] of [
+    ['class', 'html.night body', () => document.documentElement.classList.add('night')],
+    ['data- attribute', 'html[data-mode=dark] body', () => document.documentElement.setAttribute('data-mode', 'dark')],
+  ]) {
+    test(`follows a dark mode ${label} added to <html> after load`, async ({page}) => {
+      await open(page, {head: `<style>body{background:#fff} ${css}{background:#000}</style>`});
+      await expectColor(page, BLACK);
+      await page.evaluate(flip);
+      await expectColor(page, WHITE);
+    });
+  }
 });
