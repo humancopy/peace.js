@@ -6,126 +6,86 @@
  */
 
 var peaceJS;
-(function() {
+(function(document) {
 
   var script_tag = document.querySelector('script[src*="peace.js"]'),
-  // Read an attribute of the <script> tag, if there is one
-  attr           = function(name) { return script_tag ? script_tag.getAttribute(name) : null; },
-  auto_load      = script_tag && (attr('data-auto') === null || attr('data-auto') === 'true');
+  dark_mode      = matchMedia('(prefers-color-scheme: dark)'),
+  // A 1x1 canvas that blends background colours (in any CSS syntax) into one sRGB pixel
+  pixel;
 
   peaceJS = function(options) {
 
-    options = options || {};
-
     // If options is not an object we assume we got a DOM element (either a selector string or an element)
-    if (options.constructor != Object) options = {target: options};
+    if (!options || options.constructor != Object) options = {target: options};
 
+    // Read an option, else the data- attribute of the <script> tag, else the default
+    var option = function(name, fallback) { return options[name] || script_tag && script_tag.getAttribute('data-' + name) || fallback; },
     // No target given, use data-target or the parent of the <script> tag
-    if (!options.target) options.target = attr('data-target') || (script_tag && script_tag.parentNode);
-    // If the target is a text let's find it
-    if (typeof options.target == 'string') options.target = document.querySelector(options.target);
-
+    target     = option('target', script_tag && script_tag.parentNode),
     // possible options: text (default), symbol
-    options.style = options.style || attr('data-style') || 'text';
-
+    style      = option('style', 'text'),
     // possible options: auto (default, black or white to suit the page), black, white, red, green & blue
-    options.theme = options.theme || attr('data-theme') || 'auto';
-
+    theme      = option('theme', 'auto'),
     // how auto picks white: background (default, when the colour behind it is dark), device (when the device is in dark mode)
-    options.dark = options.dark || attr('data-dark') || 'background';
-
+    dark       = option('dark'),
     // possible options: '_blank' (default), _self, false (no link)
-    options.link = options.link === false || options.link ? options.link : (attr('data-link') || '_blank');
-    if (options.link === 'false') options.link = false;
+    link       = option('link', '_blank'),
+    paragraph  = document.createElement('p'),
+    css        = document.createElement('link'),
+    paint      = function() {
+      paragraph.classList.toggle('dark', dark == 'device' ? dark_mode.matches : is_dark(target));
+    };
 
-    var peace      = ['Peace', 'Paz', 'שלום', 'سلام', '平和', 'शांति', 'Paix', 'мир', 'Pace', 'Frieden'],
-    target_element = options.target || document.getElementsByTagName('footer')[0] || document.body;
+    // If the target is a text let's find it
+    target = (typeof target == 'string' ? document.querySelector(target) : target) || document.querySelector('footer') || document.body;
 
     // Do the do if can do
-    if (target_element) {
+    if (target) {
       // Load the CSS
-      var link   = document.createElement('link');
-      link.href  = 'https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.css';
-      link.type  = 'text/css';
-      link.rel   = 'stylesheet';
-      link.media = 'screen,print';
-      document.getElementsByTagName('head')[0].appendChild(link);
+      css.rel  = 'stylesheet';
+      css.href = 'https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.css';
+      document.head.appendChild(css);
 
-      // Create the peace containing paragraph & a text node
-      var paragraph = document.createElement('P'),
-      link_node     = document.createElement('A'),
-      span_node     = document.createElement('SPAN');
-
-      paragraph.className = 'peace ' + options.style + ' ' + options.theme;
-
-      // Append & set the link element
-      paragraph.appendChild(link_node);
-      link_node.appendChild(document.createTextNode(peace.join(', ')));
-      if (options.link) {
-        link_node.href = 'https://peace.humancopy.net';
-        link_node.setAttribute('target', options.link)
+      paragraph.className = 'peace ' + style + ' ' + theme;
+      paragraph.innerHTML = '<a>Peace, Paz, שלום, سلام, 平和, शांति, Paix, мир, Pace, Frieden</a>' + (style == 'symbol' ? '<span>☮</span>' : '');
+      if (options.link !== false && link != 'false') {
+        paragraph.firstChild.href   = 'https://peace.humancopy.net';
+        paragraph.firstChild.target = link;
       }
+      // Tapping the symbol shows the words
+      if (style == 'symbol') paragraph.lastChild.onclick = function() { paragraph.classList.add('show'); };
+      target.appendChild(paragraph);
 
-      // Do we want to show the peace symbol?
-      if (options.style == 'symbol') {
-        // Append peace symbol element
-        paragraph.appendChild(span_node);
-
-        // onclick should show the link element
-        span_node.onclick = function() {
-          this.parentNode.className = this.parentNode.className + ' show';
-        };
-
-        // Append the peace symbol
-        span_node.appendChild(document.createTextNode('☮'));
-      }
-
-      // Append it to target
-      target_element.appendChild(paragraph);
-
-      // Auto theme: go white on dark pages, and follow the page when it switches mode
-      if (options.theme == 'auto' && window.matchMedia) {
-        var dark_mode = window.matchMedia('(prefers-color-scheme: dark)'),
-        paint         = function() {
-          paragraph.classList.toggle('dark', options.dark == 'device' ? dark_mode.matches : is_dark(target_element));
-        };
+      // Auto theme: go white on dark pages, and follow the page when the device switches mode
+      // or the site's own dark mode toggle flips a class on <html> or <body>
+      if (theme == 'auto') {
         paint();
-        if (dark_mode.addEventListener) dark_mode.addEventListener('change', paint);
-        else if (dark_mode.addListener) dark_mode.addListener(paint);
-        // Sites with their own dark mode toggle usually flip a class on <html> or <body>
-        if (options.dark != 'device' && window.MutationObserver) {
-          var observer = new MutationObserver(paint);
-          observer.observe(document.documentElement, {attributes: true});
-          if (document.body) observer.observe(document.body, {attributes: true});
-        }
+        dark_mode.addListener(paint);
+        [document.documentElement, document.body].forEach(function(node) {
+          node && new MutationObserver(paint).observe(node, {attributes: true});
+        });
       }
     }
   };
 
-  // A 1x1 canvas the browser uses to turn any CSS colour (rgb, color(), oklch, lab...) into sRGB
-  var pixel;
-
-  // Is the colour behind the element dark? Blends translucent backgrounds down to the browser's canvas
+  // Is the colour behind the element dark? Paints the browser's canvas, then every background
+  // from <html> down to the element, and reads the resulting pixel
   function is_dark(element) {
-    var rgb = [0, 0, 0], weight = 1, meta = document.querySelector('meta[name="color-scheme"]'), color_scheme, canvas, i;
-    if (!pixel) {
-      pixel = document.createElement('canvas').getContext('2d', {willReadFrequently: true});
-      pixel.globalCompositeOperation = 'copy';
-    }
-    for (; element && element.nodeType == 1 && weight > 0; element = element.parentNode) {
-      pixel.fillStyle = getComputedStyle(element).backgroundColor;
+    var meta = document.querySelector('meta[name=color-scheme]'),
+    scheme   = getComputedStyle(document.documentElement).colorScheme + (meta ? meta.content : ''),
+    // The canvas is dark if the page only offers dark, or offers both and the device is dark
+    canvas   = /dark/.test(scheme) && (!/light/.test(scheme) || dark_mode.matches) ? '#121212' : '#fff',
+    rgb;
+    pixel = pixel || document.createElement('canvas').getContext('2d', {willReadFrequently: true});
+    // Climb to <html> first, so each background is painted over the ones behind it
+    (function fill(node) {
+      pixel.fillStyle = node && node.nodeType == 1 ? (fill(node.parentNode), getComputedStyle(node).backgroundColor) : canvas;
       pixel.fillRect(0, 0, 1, 1);
-      var rgba = pixel.getImageData(0, 0, 1, 1).data,
-      alpha    = rgba[3] / 255;
-      for (i = 0; i < 3; i++) rgb[i] += rgba[i] * alpha * weight;
-      weight *= 1 - alpha;
-    }
-    // Whatever shows through is the canvas: dark if the page only offers dark, or offers both and the device is dark
-    color_scheme = getComputedStyle(document.documentElement).colorScheme + ' ' + (meta ? meta.content : '');
-    canvas = /dark/.test(color_scheme) && (!/light/.test(color_scheme) || window.matchMedia('(prefers-color-scheme: dark)').matches) ? 18 : 255;
-    for (i = 0; i < 3; i++) rgb[i] += canvas * weight;
+    })(element);
+    rgb = pixel.getImageData(0, 0, 1, 1).data;
     return rgb[0] * .299 + rgb[1] * .587 + rgb[2] * .114 < 128;
   }
 
-  if (auto_load) peaceJS();
-})();
+  // Autoload unless data-auto is set to anything but "true"
+  if (script_tag && !script_tag.matches('[data-auto]:not([data-auto=true])')) peaceJS();
+})(document);
