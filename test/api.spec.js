@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const {test, expect, open, ready, BLACK} = require('./fixtures');
+const {test, expect, open, ready, BLACK, WHITE} = require('./fixtures');
 
 const PEACE = 'Peace, Paz, שלום, سلام, 平和, शांति, Paix, мир, Pace, Frieden';
 
@@ -61,6 +61,35 @@ test.describe('banner', () => {
 
 test.describe('peaceJS()', () => {
   const body = '<div id="a"></div><div id="b"></div><div id="c"></div><footer></footer>';
+
+  test('data-auto="true" loads on its own', async ({page}) => {
+    await open(page, {attrs: 'data-auto="true"'});
+    await ready(page);
+    await expect(page.locator('body > .peace')).toHaveCount(1);
+  });
+
+  // Anything but "true" turns autoloading off
+  for (const value of ['no', '']) {
+    test(`data-auto="${value}" waits for a manual call`, async ({page}) => {
+      await open(page, {attrs: `data-auto="${value}"`});
+      expect(await page.evaluate(() => typeof peaceJS)).toBe('function');
+      await expect(page.locator('.peace')).toHaveCount(0);
+      await page.evaluate(() => peaceJS());
+      await ready(page);
+      await expect(page.locator('body > .peace')).toHaveCount(1);
+    });
+  }
+
+  // On a light page with a dark device: "device" goes white, "background" stays black
+  for (const [attribute, option, color] of [['background', 'device', WHITE], ['device', 'background', BLACK]]) {
+    test(`{dark: '${option}'} wins over data-dark="${attribute}"`, async ({page}) => {
+      await page.emulateMedia({colorScheme: 'dark'});
+      await open(page, {head: '<style>body{background:#fff}</style>', attrs: `data-auto="false" data-dark="${attribute}"`});
+      await page.evaluate(dark => peaceJS({dark}), option);
+      await ready(page);
+      await expect(page.locator('.peace a')).toHaveCSS('color', color);
+    });
+  }
 
   test('data-auto="false" waits for a manual call', async ({page}) => {
     await open(page, {body, attrs: 'data-auto="false"'});
