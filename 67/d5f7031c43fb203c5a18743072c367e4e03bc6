@@ -1,0 +1,30 @@
+test/size.spec.js
+  s_4e4665adc7f8bf::t_e6eba083e44f6f 8
+test/fixtures.js
+  s_4e4665adc7f8bf::t_48b8d343afc35a 22
+test/api.spec.js
+  s_4e4665adc7f8bf::t_48b8d343afc35a 162-168,174,194,198-199
+  s_4e4665adc7f8bf::t_e6eba083e44f6f 169-173,175-193,195-197,200-202
+peace.js
+  s_4e4665adc7f8bf::t_e6eba083e44f6f 14
+  s_4e4665adc7f8bf::t_87608fd3faa1e5 12,50,52
+  s_4e4665adc7f8bf::t_cb23000103b753 13,51
+README.md
+  s_4e4665adc7f8bf::t_0f3cf393564009 78-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "67d5f7031c43fb203c5a18743072c367e4e03bc6",
+  "prompts": {},
+  "sessions": {
+    "s_4e4665adc7f8bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7310c6a6-76cb-43ac-b59b-cf959bfaf3a6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
