@@ -1,0 +1,21 @@
+peace.js
+  s_773a867baf0274::t_953d882326b303 9,12-14,19,21-22,24,26,28,30,32-37,39-40,43,45-53,55-57,59-61,63-66,71-72,74-82,84-85,89-91
+test/size.spec.js
+  s_773a867baf0274::t_d49052f3e68cce 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bcc23ea25e81e9e3c0158ce50d2785de0de86966",
+  "prompts": {},
+  "sessions": {
+    "s_773a867baf0274": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f5a91040-0d45-4cb2-8809-1359fa42b03b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
