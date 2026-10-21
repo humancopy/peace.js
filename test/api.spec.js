@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const {test, expect, open, ready, BLACK, WHITE} = require('./fixtures');
+const {test, expect, open, src, ready, BLACK, WHITE} = require('./fixtures');
 
 const PEACE = 'Peace, Paz, שלום, سلام, 平和, शांति, Paix, мир, Pace, Frieden';
 
@@ -18,7 +18,7 @@ test.describe('banner', () => {
   });
 
   test('goes next to the <script> tag', async ({page}) => {
-    await open(page, {body: '<main></main><div id="here"><script src="/peace.js"></script></div>'});
+    await open(page, {body: `<main></main><div id="here"><script src="${src()}"></script></div>`});
     await ready(page);
     await expect(page.locator('#here > .peace')).toHaveCount(1);
     await expect(page.locator('.peace')).toHaveCount(1);
@@ -151,7 +151,7 @@ test.describe('peaceJS()', () => {
     test(`bundled without its own <script> tag, peaceJS() goes to ${label}`, async ({page}) => {
       await page.route('**/bundle.js', route => route.fulfill({
         contentType: 'text/javascript',
-        body: fs.readFileSync(path.join(__dirname, '..', 'peace.js'), 'utf8'),
+        body: fs.readFileSync(path.join(__dirname, '..', src()), 'utf8'),
       }));
       await open(page, {body: `${markup}<script src="/bundle.js"></script>`});
       await expect(page.locator('.peace')).toHaveCount(0);
@@ -159,14 +159,14 @@ test.describe('peaceJS()', () => {
       await ready(page);
       await expect(page.locator(`${where} > .peace`)).toHaveCount(1);
       await expect(page.locator('.peace a')).toHaveCSS('color', BLACK);
-      await expect(page.locator('link[rel=stylesheet]')).toHaveAttribute('href', /^https:\/\/cdn\.jsdelivr\.net\/npm\/peace\.js@[\d.]+\/peace\.min\.css$/);
+      await expect(page.locator('link[rel=stylesheet]')).toHaveAttribute('href', /^https:\/\/cdn\.jsdelivr\.net\/npm\/peace\.js@[\d.]+\/dist\/peace\.min\.css$/);
     });
   }
 });
 
 // A file named peace.min.js, outside any peace.js folder, still finds its own <script> tag
-test('a self-hosted /js/peace.min.js loads on its own and reads its data- attributes', async ({page}) => {
-  await page.route('**/js/peace.min.*', route => route.fulfill({path: path.join(__dirname, '..', route.request().url().endsWith('.css') ? 'peace.css' : 'peace.js')}));
+test('a self-hosted /js/peace.min.js loads on its own and reads its data- attributes', async ({page, files}) => {
+  await page.route('**/js/peace.min.*', route => route.fulfill({path: path.join(__dirname, '..', route.request().url().endsWith('.css') ? files.css : files.js)}));
   await open(page, {body: '<main></main><div id="here"></div>', script: '<script src="/js/peace.min.js" data-target="#here" data-theme="red" data-style="symbol"></script>'});
   await ready(page);
   await expect(page.locator('#here > .peace')).toHaveClass(/\bsymbol\b.*\bred\b/);
@@ -174,8 +174,7 @@ test('a self-hosted /js/peace.min.js loads on its own and reads its data- attrib
 
 // Wherever the script is installed, its stylesheet comes from the same place
 test.describe('stylesheet', () => {
-  const CDN = /^https:\/\/cdn\.jsdelivr\.net\/npm\/peace\.js@[\d.]+\/peace\.min\.css$/;
-  const files = {js: path.join(__dirname, '..', 'peace.js'), css: path.join(__dirname, '..', 'peace.css')};
+  const CDN = /^https:\/\/cdn\.jsdelivr\.net\/npm\/peace\.js@[\d.]+\/dist\/peace\.min\.css$/;
   const cases = [
     // Self-hosted, with the address relative, absolute, or with a query or hash
     ['peace.js', '/peace.css'],
@@ -206,10 +205,10 @@ test.describe('stylesheet', () => {
     ['https://unpkg.com/peace.js#top', CDN],
   ];
   for (const [script, stylesheet] of cases) {
-    test(`${script} loads ${stylesheet}`, async ({page, baseURL}) => {
+    test(`${script} loads ${stylesheet}`, async ({page, baseURL, files}) => {
       // Serve peace.js and peace.css at any of these addresses, other than the jsDelivr fallback the fixture already serves
       const ours = url => !CDN.test(url.href) && /peace/.test(url.pathname);
-      await page.route(ours, route => route.fulfill({path: /\.css([?#]|$)/.test(route.request().url()) ? files.css : files.js}));
+      await page.route(ours, route => route.fulfill({path: path.join(__dirname, '..', /\.css([?#]|$)/.test(route.request().url()) ? files.css : files.js)}));
       await open(page, {script: `<script src="${script}"></script>`});
       await ready(page);
       const href = await page.locator('link[rel=stylesheet]').getAttribute('href');

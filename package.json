@@ -1,10 +1,14 @@
 {
   "name": "peace.js",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "Peace please",
   "main": "peace.js",
+  "jsdelivr": "dist/peace.min.js",
+  "unpkg": "dist/peace.min.js",
   "scripts": {
-    "test": "playwright test"
+    "build": "node scripts/build.js",
+    "test": "playwright test",
+    "prepublishOnly": "npm test"
   },
   "repository": {
     "type": "git",
@@ -18,12 +22,14 @@
   "bugs": {
     "url": "https://github.com/humancopy/peace.js/issues"
   },
-  "homepage": "https://github.com/humancopy/peace.js#readme",
+  "homepage": "https://peace.humancopy.net",
   "devDependencies": {
     "@playwright/test": "1.64.1",
+    "clean-css": "5.3.3",
     "terser": "5.51.2"
   },
   "files": [
+    "dist",
     "peace.js",
     "peace.css",
     "peace.scss"

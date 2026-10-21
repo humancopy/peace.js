@@ -8,6 +8,7 @@ const {test, expect} = require('@playwright/test');
 const BUDGET = 1150;
 
 test('peace.js fits the size budget', async () => {
+  test.skip(test.info().project.name != 'source', 'checked once');
   const source = fs.readFileSync(path.join(__dirname, '..', 'peace.js'), 'utf8');
   const {code} = await minify(source, {compress: true, mangle: true});
   const size = zlib.gzipSync(code, {level: 9}).length;

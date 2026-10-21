@@ -1,4 +1,4 @@
-const {test, expect, open, expectColor, BLACK, WHITE} = require('./fixtures');
+const {test, expect, open, src, expectColor, BLACK, WHITE} = require('./fixtures');
 
 const DARK_MEDIA = '<style>body{background:#fff} @media (prefers-color-scheme: dark){body{background:#111}}</style>';
 const BOTH_META = '<meta name="color-scheme" content="light dark">';
@@ -79,7 +79,7 @@ test.describe('see-through backgrounds', () => {
     test(`footer ${footer} over body ${body}`, async ({page}) => {
       await open(page, {
         head: `<style>body{background:${body}} footer{background:${footer}}</style>`,
-        body: '<footer><script src="/peace.js"></script></footer>',
+        body: `<footer><script src="${src()}"></script></footer>`,
       });
       await expectColor(page, color);
     });
