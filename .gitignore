@@ -59,3 +59,6 @@ typings/
 
 # Github config
 _config.yml
+# Playwright
+test-results/
+playwright-report/
