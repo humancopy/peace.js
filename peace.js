@@ -104,13 +104,22 @@ var peaceJS;
     }
   };
 
+  // A 1x1 canvas the browser uses to turn any CSS colour (rgb, color(), oklch, lab...) into sRGB
+  var pixel;
+
   // Is the colour behind the element dark? Blends translucent backgrounds down to the browser's canvas
   function is_dark(element) {
     var rgb = [0, 0, 0], weight = 1, meta = document.querySelector('meta[name="color-scheme"]'), color_scheme, canvas, i;
+    if (!pixel) {
+      pixel = document.createElement('canvas').getContext('2d', {willReadFrequently: true});
+      pixel.globalCompositeOperation = 'copy';
+    }
     for (; element && element.nodeType == 1 && weight > 0; element = element.parentNode) {
-      var rgba = getComputedStyle(element).backgroundColor.match(/[\d.]+/g),
-      alpha    = rgba ? (rgba.length < 4 ? 1 : +rgba[3]) : 0;
-      for (i = 0; i < 3; i++) rgb[i] += alpha ? rgba[i] * alpha * weight : 0;
+      pixel.fillStyle = getComputedStyle(element).backgroundColor;
+      pixel.fillRect(0, 0, 1, 1);
+      var rgba = pixel.getImageData(0, 0, 1, 1).data,
+      alpha    = rgba[3] / 255;
+      for (i = 0; i < 3; i++) rgb[i] += rgba[i] * alpha * weight;
       weight *= 1 - alpha;
     }
     // Whatever shows through is the canvas: dark if the page only offers dark, or offers both and the device is dark
