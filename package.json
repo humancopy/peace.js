@@ -3,7 +3,10 @@
   "version": "2.0.0",
   "description": "Peace please",
   "main": "peace.js",
+  "jsdelivr": "dist/peace.min.js",
+  "unpkg": "dist/peace.min.js",
   "scripts": {
+    "build": "node scripts/build.js",
     "test": "playwright test"
   },
   "repository": {
@@ -21,9 +24,11 @@
   "homepage": "https://peace.humancopy.net",
   "devDependencies": {
     "@playwright/test": "1.64.1",
+    "clean-css": "5.3.3",
     "terser": "5.51.2"
   },
   "files": [
+    "dist",
     "peace.js",
     "peace.css",
     "peace.scss"

@@ -7,8 +7,19 @@
   ],
   "description": "Spread peace",
   "main": [
-    "peace.js",
-    "peace.css"
+    "dist/peace.min.js",
+    "dist/peace.min.css"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "ignore": [
+    ".github",
+    "test",
+    "scripts",
+    "node_modules",
+    "*.html",
+    "CNAME",
+    "SHARE.md",
+    "package-lock.json",
+    "playwright.config.js"
+  ]
 }
