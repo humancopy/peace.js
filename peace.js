@@ -93,6 +93,7 @@ var peaceJS;
         };
         paint();
         if (dark_mode.addEventListener) dark_mode.addEventListener('change', paint);
+        else if (dark_mode.addListener) dark_mode.addListener(paint);
         // Sites with their own dark mode toggle usually flip a class on <html> or <body>
         if (options.dark != 'device' && window.MutationObserver) {
           var observer = new MutationObserver(paint);
@@ -103,15 +104,20 @@ var peaceJS;
     }
   };
 
-  // Is the first solid background colour behind the element dark?
+  // Is the colour behind the element dark? Blends translucent backgrounds down to the browser's canvas
   function is_dark(element) {
-    for (; element && element.nodeType == 1; element = element.parentNode) {
-      var rgba = getComputedStyle(element).backgroundColor.match(/[\d.]+/g);
-      if (rgba && (rgba.length < 4 || +rgba[3] > 0)) return rgba[0] * .299 + rgba[1] * .587 + rgba[2] * .114 < 128;
+    var rgb = [0, 0, 0], weight = 1, meta = document.querySelector('meta[name="color-scheme"]'), color_scheme, canvas, i;
+    for (; element && element.nodeType == 1 && weight > 0; element = element.parentNode) {
+      var rgba = getComputedStyle(element).backgroundColor.match(/[\d.]+/g),
+      alpha    = rgba ? (rgba.length < 4 ? 1 : +rgba[3]) : 0;
+      for (i = 0; i < 3; i++) rgb[i] += alpha ? rgba[i] * alpha * weight : 0;
+      weight *= 1 - alpha;
     }
-    // No background anywhere: the browser's canvas, dark only if the page opted into a dark color-scheme
-    var meta = document.querySelector('meta[name="color-scheme"]');
-    return /dark/.test(getComputedStyle(document.documentElement).colorScheme + (meta ? meta.content : '')) && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Whatever shows through is the canvas: dark if the page only offers dark, or offers both and the device is dark
+    color_scheme = getComputedStyle(document.documentElement).colorScheme + ' ' + (meta ? meta.content : '');
+    canvas = /dark/.test(color_scheme) && (!/light/.test(color_scheme) || window.matchMedia('(prefers-color-scheme: dark)').matches) ? 18 : 255;
+    for (i = 0; i < 3; i++) rgb[i] += canvas * weight;
+    return rgb[0] * .299 + rgb[1] * .587 + rgb[2] * .114 < 128;
   }
 
   if (auto_load) peaceJS();
