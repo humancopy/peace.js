@@ -75,6 +75,16 @@ peaceJS({
 </script>
 ```
 
+## Development
+
+The tests run **PEACE.JS** in a real browser (Chromium, via [Playwright](https://playwright.dev)), checking the banner's colors on light, dark and see-through pages, and every option. A size test also keeps `peace.js` under its budget once minified and gzipped.
+
+```sh
+npm install
+npx playwright install chromium
+npm test
+```
+
 ## Share peace
 
 Using **PEACE.JS**? Make a pull request to be listed [here](SHARE.md).
