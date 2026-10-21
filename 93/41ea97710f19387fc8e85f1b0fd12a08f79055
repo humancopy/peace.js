@@ -1,0 +1,26 @@
+test/api.spec.js
+  s_4e4665adc7f8bf::t_e55a2d4e9bc4d9 167-174,185
+  s_4e4665adc7f8bf::t_2325b358f6be66 187-190,205-206,211
+test/size.spec.js
+  s_4e4665adc7f8bf::t_e55a2d4e9bc4d9 8
+peace.js
+  s_4e4665adc7f8bf::t_9595d2c2f3808f 11,13-14
+README.md
+  s_4e4665adc7f8bf::t_ec149998516125 80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9341ea97710f19387fc8e85f1b0fd12a08f79055",
+  "prompts": {},
+  "sessions": {
+    "s_4e4665adc7f8bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7310c6a6-76cb-43ac-b59b-cf959bfaf3a6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
