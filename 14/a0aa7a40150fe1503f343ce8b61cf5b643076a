@@ -1,0 +1,44 @@
+.github/workflows/test.yml
+  s_6c6ba2474578f2::t_f402058e1ff4ec 1-25
+test/api.spec.js
+  s_6c6ba2474578f2::t_98f6252d81af3d 1-77,88-135
+  s_6c6ba2474578f2::t_09aa1d98b387dd 78-87
+playwright.config.js
+  s_6c6ba2474578f2::t_255378aae5a9c8 1-9
+test/server.js
+  s_6c6ba2474578f2::t_5c7b21690164e1 1-28
+test/size.spec.js
+  s_6c6ba2474578f2::t_4e707521569597 1-17
+test/fixtures.js
+  s_6c6ba2474578f2::t_de5144c3e5056b 1-22,24-25,30,37-60
+  s_6c6ba2474578f2::t_1977f15a4d4771 23,26-29,32-35
+  s_6c6ba2474578f2::t_47370dc79c3736 31,36
+README.md
+  s_6c6ba2474578f2::t_01c5f7b03663ce 78-87
+package.json
+  s_6c6ba2474578f2::t_caf238022dce99 25-30
+  s_6c6ba2474578f2::t_231518e053c9ce 7
+  s_6c6ba2474578f2::t_985d03bba4739e 21-24
+.gitignore
+  s_6c6ba2474578f2::t_caf238022dce99 61-64
+test/theme.spec.js
+  s_6c6ba2474578f2::t_b9f8ab5234b521 1-122
+package-lock.json
+  s_6c6ba2474578f2::t_2cf1e8e3aae878 1-179
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "14a0aa7a40150fe1503f343ce8b61cf5b643076a",
+  "prompts": {},
+  "sessions": {
+    "s_6c6ba2474578f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5718c726-74ba-4ae9-a8ae-11d7512d62cd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
