@@ -4,7 +4,9 @@ const {start} = require('./server');
 
 const CDN_CSS = 'https://cdn.jsdelivr.net/npm/peace.js@*/peace.min.css';
 
-const BLACK = 'rgb(0, 0, 0)';
+const HOME = 'https://peace.humancopy.net';
+
+const BLACK ='rgb(0, 0, 0)';
 const WHITE = 'rgb(255, 255, 255)';
 
 const test = base.extend({
@@ -19,7 +21,7 @@ const test = base.extend({
 
   // Every page answers the CDN stylesheet with the local peace.css, stays offline,
   // and fails the test on any page error or console warning
-  page: async ({page, baseURL}, use) => {
+  page: async ({context, page, baseURL}, use) => {
     const problems = [], stubbed = new Set();
     page.on('pageerror', error => problems.push(`pageerror: ${error.message}`));
     page.on('console', message => {
@@ -28,12 +30,13 @@ const test = base.extend({
         problems.push(`${message.type()}: ${message.text()}`);
       }
     });
-    // The last matching route wins, so the catch-all goes first
-    await page.route(url => !url.href.startsWith(baseURL), route => {
+    // Routed on the context so new tabs get them too. The last matching route wins, so the catch-all goes first
+    await context.route(url => !url.href.startsWith(baseURL), route => {
       stubbed.add(route.request().url());
       return route.fulfill({status: 204});
     });
-    await page.route(CDN_CSS, route => route.fulfill({path: path.join(__dirname, '..', 'peace.css')}));
+    await context.route(CDN_CSS, route => route.fulfill({path: path.join(__dirname, '..', 'peace.css')}));
+    await context.route(`${HOME}/**`, route => route.fulfill({contentType: 'text/html', body: '<!doctype html><title>Peace</title>'}));
     await use(page);
     expect(problems, 'page errors and console warnings').toEqual([]);
   },
@@ -57,4 +60,4 @@ async function expectColor(page, color) {
   await expect(page.locator('.peace a')).toHaveCSS('color', color);
 }
 
-module.exports = {test, expect, open, ready, expectColor, BLACK, WHITE};
+module.exports = {test, expect, open, ready, expectColor, HOME, BLACK, WHITE};
