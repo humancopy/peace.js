@@ -1,0 +1,22 @@
+test/theme.spec.js
+  s_6c6ba2474578f2::t_4507af921eb5f4 122-134
+test/api.spec.js
+  s_6c6ba2474578f2::t_31cfce4fce2e90 65-83,85-93
+  s_6c6ba2474578f2::t_f63d4c1c4f0f86 3,84
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bb00a3ef1a691f599f2dd40563b8f3afb4609fb4",
+  "prompts": {},
+  "sessions": {
+    "s_6c6ba2474578f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5718c726-74ba-4ae9-a8ae-11d7512d62cd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
