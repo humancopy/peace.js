@@ -1,0 +1,21 @@
+peace.css
+  s_3cd6d25e54f73d::t_9877527c059056 60-64
+peace.scss
+  s_3cd6d25e54f73d::t_9877527c059056 65-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e80842ee0a69e8172f3cc80ffb17d04f57465bf9",
+  "prompts": {},
+  "sessions": {
+    "s_3cd6d25e54f73d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ea560b6-b539-443b-b02b-f15eca0f24a1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
