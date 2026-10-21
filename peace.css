@@ -62,7 +62,12 @@ a:not([href]) {
 .peace.auto a:hover,
 .peace.auto a:visited {
   color: #000;
-  color: light-dark(#000, #fff);
+}
+.peace.auto.dark span,
+.peace.auto.dark a,
+.peace.auto.dark a:hover,
+.peace.auto.dark a:visited {
+  color: #fff;
 }
 .peace.black span,
 .peace.black a,

@@ -71,7 +71,14 @@
     a:visited,
     a:hover {
       color: #000;
-      color: light-dark(#000, #fff);
+    }
+    &.dark {
+      span,
+      a,
+      a:visited,
+      a:hover {
+        color: #fff;
+      }
     }
   }
   &.black {

@@ -26,16 +26,18 @@ By default, **PEACE.JS** will be appeneded to the parent element of the ```<scri
 
 ## Themes
 
-By default (`auto`) **PEACE.JS** is black, and turns white when your page is in dark mode. It follows the page's [color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme), so if your site has a dark mode, declare it and the banner will follow the device setting:
-
-```html
-<meta name="color-scheme" content="light dark">
-```
-
-Sites that don't declare a dark color-scheme keep the black text, so the banner never disappears on a light page. To pick a fixed color use the `data-theme` attribute. Possible values are: `auto`, `black`, `white`, `green`, `blue` & `red`.
+By default (`auto`) **PEACE.JS** is black, and turns white when the background behind it is dark — so it fits light and dark pages, and follows your site when it switches between them (the device's dark mode, or your own dark mode toggle). To pick a fixed color use the `data-theme` attribute. Possible values are: `auto`, `black`, `white`, `green`, `blue` & `red`.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" data-theme="blue" async></script>
+```
+
+## Dark mode
+
+With the `auto` theme, the `data-dark` attribute chooses when **PEACE.JS** turns white. Possible values are: `background` (default) to go white when the color behind it is dark, or `device` to go white whenever the device is in dark mode.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" data-dark="device" async></script>
 ```
 
 ## Style

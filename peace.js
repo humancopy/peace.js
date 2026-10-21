@@ -30,8 +30,11 @@ var peaceJS;
     // possible options: text (default), symbol
     options.style = options.style || attr('data-style') || 'text';
 
-    // possible options: auto (default, black or white following the page's color-scheme), black, white, red, green & blue
+    // possible options: auto (default, black or white to suit the page), black, white, red, green & blue
     options.theme = options.theme || attr('data-theme') || 'auto';
+
+    // how auto picks white: background (default, when the colour behind it is dark), device (when the device is in dark mode)
+    options.dark = options.dark || attr('data-dark') || 'background';
 
     // possible options: '_blank' (default), _self, false (no link)
     options.link = options.link === false || options.link ? options.link : (attr('data-link') || '_blank');
@@ -81,8 +84,35 @@ var peaceJS;
 
       // Append it to target
       target_element.appendChild(paragraph);
+
+      // Auto theme: go white on dark pages, and follow the page when it switches mode
+      if (options.theme == 'auto' && window.matchMedia) {
+        var dark_mode = window.matchMedia('(prefers-color-scheme: dark)'),
+        paint         = function() {
+          paragraph.classList.toggle('dark', options.dark == 'device' ? dark_mode.matches : is_dark(target_element));
+        };
+        paint();
+        if (dark_mode.addEventListener) dark_mode.addEventListener('change', paint);
+        // Sites with their own dark mode toggle usually flip a class on <html> or <body>
+        if (options.dark != 'device' && window.MutationObserver) {
+          var observer = new MutationObserver(paint);
+          observer.observe(document.documentElement, {attributes: true});
+          if (document.body) observer.observe(document.body, {attributes: true});
+        }
+      }
     }
   };
+
+  // Is the first solid background colour behind the element dark?
+  function is_dark(element) {
+    for (; element && element.nodeType == 1; element = element.parentNode) {
+      var rgba = getComputedStyle(element).backgroundColor.match(/[\d.]+/g);
+      if (rgba && (rgba.length < 4 || +rgba[3] > 0)) return rgba[0] * .299 + rgba[1] * .587 + rgba[2] * .114 < 128;
+    }
+    // No background anywhere: the browser's canvas, dark only if the page opted into a dark color-scheme
+    var meta = document.querySelector('meta[name="color-scheme"]');
+    return /dark/.test(getComputedStyle(document.documentElement).colorScheme + (meta ? meta.content : '')) && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
 
   if (auto_load) peaceJS();
 })();
