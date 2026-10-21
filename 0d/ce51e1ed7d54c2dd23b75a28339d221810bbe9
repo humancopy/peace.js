@@ -1,0 +1,24 @@
+test/fixtures.js
+  s_6c6ba2474578f2::t_1e9177d9d8b0d0 33-34,38-39
+  s_6c6ba2474578f2::t_d31f8e5f1141ab 7-9
+  s_6c6ba2474578f2::t_fa0544bacec501 24
+  s_6c6ba2474578f2::t_a882886ee06c76 63
+test/interaction.spec.js
+  s_6c6ba2474578f2::t_749ad5c4309e92 1-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0dce51e1ed7d54c2dd23b75a28339d221810bbe9",
+  "prompts": {},
+  "sessions": {
+    "s_6c6ba2474578f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5718c726-74ba-4ae9-a8ae-11d7512d62cd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
