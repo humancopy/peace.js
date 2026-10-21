@@ -9,7 +9,8 @@ var peaceJS;
 (function(document) {
 
   var script_tag = document.querySelector('script[src*="peace.js"]'),
-  dark_mode      = matchMedia('(prefers-color-scheme: dark)'),
+  // The device's dark mode, where the browser can tell
+  dark_mode      = window.matchMedia && matchMedia('(prefers-color-scheme: dark)'),
   // A 1x1 canvas that blends background colours (in any CSS syntax) into one sRGB pixel
   pixel;
 
@@ -58,7 +59,7 @@ var peaceJS;
 
       // Auto theme: go white on dark pages, and follow the page when the device switches mode
       // or the site's own dark mode toggle flips a class on <html> or <body>
-      if (theme == 'auto') {
+      if (theme == 'auto' && dark_mode) {
         paint();
         dark_mode.addListener(paint);
         [document.documentElement, document.body].forEach(function(node) {
