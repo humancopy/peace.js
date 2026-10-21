@@ -26,7 +26,13 @@ By default, **PEACE.JS** will be appeneded to the parent element of the ```<scri
 
 ## Themes
 
-The default text color for **PEACE.JS** is black. This can be controlled via the `data-theme` attribute. Possible values are: `black`, `white`, `green`, `blue` & `red`.
+By default (`auto`) **PEACE.JS** is black, and turns white when your page is in dark mode. It follows the page's [color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme), so if your site has a dark mode, declare it and the banner will follow the device setting:
+
+```html
+<meta name="color-scheme" content="light dark">
+```
+
+Sites that don't declare a dark color-scheme keep the black text, so the banner never disappears on a light page. To pick a fixed color use the `data-theme` attribute. Possible values are: `auto`, `black`, `white`, `green`, `blue` & `red`.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@1.3.2/peace.min.js" data-theme="blue" async></script>

@@ -30,8 +30,8 @@ var peaceJS;
     // possible options: text (default), symbol
     options.style = options.style || attr('data-style') || 'text';
 
-    // possible options: black (default), white, green & blue
-    options.theme = options.theme || attr('data-theme') || 'black';
+    // possible options: auto (default, black or white following the page's color-scheme), black, white, red, green & blue
+    options.theme = options.theme || attr('data-theme') || 'auto';
 
     // possible options: '_blank' (default), _self, false (no link)
     options.link = options.link === false || options.link ? options.link : (attr('data-link') || '_blank');

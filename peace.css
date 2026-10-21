@@ -57,6 +57,13 @@ a:not([href]) {
 .peace.symbol:hover span {
   opacity: 0;
 }
+.peace.auto span,
+.peace.auto a,
+.peace.auto a:hover,
+.peace.auto a:visited {
+  color: #000;
+  color: light-dark(#000, #fff);
+}
 .peace.black span,
 .peace.black a,
 .peace.black a:hover,
