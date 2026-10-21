@@ -1,7 +1,7 @@
 /**
  * PEACE.js - http://humancopy.net/peace-js.html
  * Peace please, humancopy.net 2017
- * Version 1.3.2
+ * Version 1.4.0
  *
  */
 
@@ -56,6 +56,18 @@ a:not([href]) {
 .peace.symbol.show span,
 .peace.symbol:hover span {
   opacity: 0;
+}
+.peace.auto span,
+.peace.auto a,
+.peace.auto a:hover,
+.peace.auto a:visited {
+  color: #000;
+}
+.peace.auto.dark span,
+.peace.auto.dark a,
+.peace.auto.dark a:hover,
+.peace.auto.dark a:visited {
+  color: #fff;
 }
 .peace.black span,
 .peace.black a,
