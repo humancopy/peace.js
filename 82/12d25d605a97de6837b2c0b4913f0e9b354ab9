@@ -1,0 +1,59 @@
+test/fixtures.js
+  s_4e4665adc7f8bf::t_ece2eaa345cb9c 5,13-15,27,41,56-57,71
+  s_4e4665adc7f8bf::t_e7b290a1ee6e20 58
+  s_4e4665adc7f8bf::t_85cd9586b68281 50
+  s_4e4665adc7f8bf::t_8cb01cd3b19544 60
+  s_4e4665adc7f8bf::t_87b27acc5cf50f 25
+  s_4e4665adc7f8bf::t_ba61ff745f7a5d 59
+test/theme.spec.js
+  s_4e4665adc7f8bf::t_e7b290a1ee6e20 1,82
+scripts/build.js
+  s_4e4665adc7f8bf::t_e3043edfe47997 1-48
+package.json
+  s_4e4665adc7f8bf::t_e3043edfe47997 27
+  s_4e4665adc7f8bf::t_49841b7ae609e7 6-7,9,31
+playwright.config.js
+  s_4e4665adc7f8bf::t_ece2eaa345cb9c 10-14
+peace.js
+  s_4e4665adc7f8bf::t_87b27acc5cf50f 52
+test/api.spec.js
+  s_4e4665adc7f8bf::t_c9bf3a79441397 168-169,208,211
+  s_4e4665adc7f8bf::t_e7b290a1ee6e20 3,21,154
+  s_4e4665adc7f8bf::t_87b27acc5cf50f 162,177
+test/size.spec.js
+  s_4e4665adc7f8bf::t_98669683898c1d 11
+README.md
+  s_4e4665adc7f8bf::t_49841b7ae609e7 6,16,24,32,40,48,58
+  s_4e4665adc7f8bf::t_98b665ef96de49 80,84-86,91
+bower.json
+  s_4e4665adc7f8bf::t_49841b7ae609e7 10-11,13-14,16-19,23-24
+  s_4e4665adc7f8bf::t_ece2eaa345cb9c 15,20-22
+test/dist.spec.js
+  s_4e4665adc7f8bf::t_98669683898c1d 1-12
+dist/peace.min.css
+  s_4e4665adc7f8bf::t_a3f77ce41d77df 1-3
+dist/peace.min.css.map
+  s_4e4665adc7f8bf::t_fc3e19910108b7 1
+dist/peace.min.js
+  s_4e4665adc7f8bf::t_357b21707625f5 1-3
+dist/peace.min.js.map
+  s_4e4665adc7f8bf::t_a0687678faa69b 1
+package-lock.json
+  s_4e4665adc7f8bf::t_dba8ad04478f2c 13,103-115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8212d25d605a97de6837b2c0b4913f0e9b354ab9",
+  "prompts": {},
+  "sessions": {
+    "s_4e4665adc7f8bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7310c6a6-76cb-43ac-b59b-cf959bfaf3a6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
