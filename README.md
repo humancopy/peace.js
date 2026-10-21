@@ -52,7 +52,7 @@ By default, **PEACE.JS** will show the word Peace in different languages. If you
 
 You can also disable the automatic activation of the banner by adding the attribute `data-auto="false"` to the script. You can then activate it by calling the ```peaceJS()``` function.
 
-The ```peaceJS()``` function accepts an optional argument of either a hash of options, a DOM element or a CSS selector. Any option passed to ```peaceJS()``` has precedence over what was defined on the ```<script>``` tag. Using jQuery or a NodeList? Pass a single element (```$('#footer')[0]```, ```list[0]```) or the selector string.
+The ```peaceJS()``` function accepts an optional argument of either a hash of options, a DOM element or a CSS selector. Any option passed to ```peaceJS()``` has precedence over what was defined on the ```<script>``` tag. Got a jQuery object or any other list of elements (NodeList, HTMLCollection, array)? Pass a single element (```$('#footer')[0]```, ```list[0]```) or the selector string.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" data-auto="false" data-theme="green" data-link="_self" async></script>
