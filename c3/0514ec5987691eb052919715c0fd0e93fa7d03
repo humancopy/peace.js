@@ -1,0 +1,19 @@
+README.md
+  s_b0d56a9ac2cc05::t_0a01b3107ba8e9 55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c30514ec5987691eb052919715c0fd0e93fa7d03",
+  "prompts": {},
+  "sessions": {
+    "s_b0d56a9ac2cc05": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a21f8a3d-f915-4ad9-9f6e-6a6c9791a78d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
