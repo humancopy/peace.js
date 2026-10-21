@@ -1,0 +1,25 @@
+peace.css
+  s_4e4665adc7f8bf::t_6df3519aaa5141 60-66
+peace.js
+  s_4e4665adc7f8bf::t_6df3519aaa5141 33-34
+peace.scss
+  s_4e4665adc7f8bf::t_6df3519aaa5141 68-76
+README.md
+  s_4e4665adc7f8bf::t_6df3519aaa5141 29-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7e766a55db0d3d743bb1d677a596165d16e006e5",
+  "prompts": {},
+  "sessions": {
+    "s_4e4665adc7f8bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7310c6a6-76cb-43ac-b59b-cf959bfaf3a6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
