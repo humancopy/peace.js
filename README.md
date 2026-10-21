@@ -3,7 +3,7 @@
 Add the following piece (~no~ pun intended) of code before the closing ```</body>``` tag on your website to promote **PEACE.JS**:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@1.3.2/peace.min.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" async></script>
 ```
 
 *You can actually paste it anywhere inside the ```<body>```. It will inject itself at the same DOM level as the ```<script>``` tag.*
@@ -13,7 +13,7 @@ Add the following piece (~no~ pun intended) of code before the closing ```</body
 By default, **PEACE.JS** will be appeneded to the parent element of the ```<script>``` tag. If you'd like to inject it somewhere else, simply add the `data-target` attribute:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@1.3.2/peace.min.js" data-target="#footer" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" data-target="#footer" async></script>
 ```
 
 ## Link
@@ -21,7 +21,7 @@ By default, **PEACE.JS** will be appeneded to the parent element of the ```<scri
 **PEACE.JS** will automatically link the generated peace banner to the project's homepage. By default the link will open in a new window. You can either change it to open in the same window or to not have any link at all (why would you want to do that though is beyond me :smirk:). Possible values are: anything supported by the [a[target]](https://www.w3schools.com/tags/att_a_target.asp) attribute or `false` to disable the link.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@1.3.2/peace.min.js" data-link="_self" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" data-link="_self" async></script>
 ```
 
 ## Themes
@@ -35,7 +35,7 @@ By default (`auto`) **PEACE.JS** is black, and turns white when your page is in 
 Sites that don't declare a dark color-scheme keep the black text, so the banner never disappears on a light page. To pick a fixed color use the `data-theme` attribute. Possible values are: `auto`, `black`, `white`, `green`, `blue` & `red`.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@1.3.2/peace.min.js" data-theme="blue" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" data-theme="blue" async></script>
 ```
 
 ## Style
@@ -43,7 +43,7 @@ Sites that don't declare a dark color-scheme keep the black text, so the banner 
 By default, **PEACE.JS** will show the word Peace in different languages. If you prefer instead to show a peace symbol, simply add the `data-style="symbol"` attribute to the script tag. Possible values are: `text`, `symbol`
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@1.3.2/peace.min.js" data-style="symbol" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" data-style="symbol" async></script>
 ```
 
 ## Autoloading
@@ -53,7 +53,7 @@ You can also disable the automatic activation of the banner by adding the attrib
 The ```peaceJS()``` function accepts an optional argument of either a hash of options, DOM element, DOM selector or jQuery object. Any option passed to ```peaceJS()``` has precedence over what was defined on the ```<script>``` tag.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@1.3.2/peace.min.js" data-auto="false" data-theme="green" data-link="_self" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@1.4.0/peace.min.js" data-auto="false" data-theme="green" data-link="_self" async></script>
 
 <script>
 // Default behaviour
