@@ -17,15 +17,13 @@ var peaceJS;
 
     options = options || {};
 
-    // If options is not an object we assume we got a DOM element (either string, element, jQuery object etc...)
+    // If options is not an object we assume we got a DOM element (either a selector string or an element)
     if (options.constructor != Object) options = {target: options};
 
     // No target given, use data-target or the parent of the <script> tag
     if (!options.target) options.target = attr('data-target') || (script_tag && script_tag.parentNode);
     // If the target is a text let's find it
     if (typeof options.target == 'string') options.target = document.querySelector(options.target);
-    // Assume we got a jQuery object
-    else if (options.target && !options.target.nodeType) options.target = options.target[0];
 
     // possible options: text (default), symbol
     options.style = options.style || attr('data-style') || 'text';
