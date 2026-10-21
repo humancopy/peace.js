@@ -1,0 +1,27 @@
+README.md
+  s_4e4665adc7f8bf::t_ee32dd7f511cdf 6,16,24,38,46,56
+package.json
+  s_4e4665adc7f8bf::t_6f5ac8fdf0fde3 3
+peace.css
+  s_4e4665adc7f8bf::t_24859a51b41346 4
+peace.js
+  s_4e4665adc7f8bf::t_666ba7d9faf0a0 4,47
+peace.scss
+  s_4e4665adc7f8bf::t_7794846bb4f111 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f0eb86eeabcb106b6bc9b54d44d0f0618dfa3de9",
+  "prompts": {},
+  "sessions": {
+    "s_4e4665adc7f8bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7310c6a6-76cb-43ac-b59b-cf959bfaf3a6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
