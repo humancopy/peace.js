@@ -45,6 +45,8 @@ a:not([href]) {
   cursor: default;
 }
 .peace.symbol a {
+  display: inline-block;
+  height: auto;
   opacity: 0;
   position: relative;
   z-index: 2;

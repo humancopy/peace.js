@@ -52,6 +52,19 @@ test.describe('touch', () => {
     expect(context.pages()).toHaveLength(1);
   });
 
+  test('symbol, _self: after the reveal, a tap anywhere on ☮ follows the link', async ({page}) => {
+    // Narrow enough for the words to wrap, leaving gaps between their lines
+    await page.setViewportSize({width: 320, height: 640});
+    const peace = await banner(page, 'data-style="symbol" data-link="_self"');
+    await peace.locator('span').tap();
+    await expect(peace).toHaveClass(/\bshow\b/);
+
+    // The top edge of the symbol, above the words' first line
+    const box = await peace.locator('span').boundingBox();
+    await page.touchscreen.tap(box.x + box.width / 2, box.y + 2);
+    await expect(page).toHaveURL(`${HOME}/`);
+  });
+
   test('symbol, data-link="false": taps reveal the words and go nowhere', async ({page, context}) => {
     const urls = visits(context);
     const peace = await banner(page, 'data-style="symbol" data-link="false"');
@@ -75,6 +88,13 @@ test.describe('desktop', () => {
     // Click where the symbol is drawn, whatever sits on top of it
     const box = await peace.locator('span').boundingBox();
     await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+    await expect(page).toHaveURL(`${HOME}/`);
+  });
+
+  test('symbol, _self: one click on the edge of ☮ follows the link', async ({page}) => {
+    const peace = await banner(page, 'data-style="symbol" data-link="_self"');
+    const box = await peace.locator('span').boundingBox();
+    await page.mouse.click(box.x + box.width / 2, box.y + 2);
     await expect(page).toHaveURL(`${HOME}/`);
   });
 
