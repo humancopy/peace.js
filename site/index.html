@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>peace.js</title>
+<meta name="description" content="One line of JavaScript that adds a quiet wish for peace to the footer of your website.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css?v=dove4">
+</head>
+<body>
+
+<header class="wrap top">
+  <a href="#top" class="brand">peace.js</a>
+  <nav>
+    <a href="#install">Install</a>
+    <a href="#embed">Embed</a>
+    <a href="#options">Options</a>
+    <a href="#share">Sharing</a>
+    <a href="https://github.com/humancopy/peace.js" class="star" aria-label="Star peace.js on GitHub">
+      <span class="star-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>Star</span>
+      <span class="star-count" id="stars" hidden></span>
+    </a>
+  </nav>
+</header>
+
+<section id="top" class="wrap hero">
+  <a class="tag" href="https://github.com/humancopy/peace.js/releases/tag/v2.0.1" title="Changelog"><span class="dot"></span><span>v2.0.1 · MIT · now with dark mode</span></a>
+  <div class="title">
+    <h1>Peace</h1>
+    <svg class="dove" viewBox="0 0 160 120" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <g class="dove-body">
+        <path d="M30 78 C50 76 70 72 88 62 C98 56 104 46 110 40 C116 34 126 34 129 40 C131 44 130 48 127 52 C120 66 104 84 74 88 C56 90 40 86 30 78"/>
+        <path d="M30 78 L10 68 M30 78 L8 80 M32 80 L14 91"/>
+        <g class="olive">
+          <path d="M134 45 C141 52 144 60 143 72"/>
+          <path d="M138 50 C142 44 150 42 155 45 C151 50 144 52 138 50 Z M141 59 C136 60 132 65 132 71 C138 69 141 64 141 59 Z M143 64 C148 62 153 63 156 67 C151 70 146 69 143 64 Z"/>
+        </g>
+        <path d="M129 40 L138 43.5 L128 46.5" fill="var(--bg)"/>
+        <circle cx="122" cy="41" r="1.6" fill="currentColor" stroke="none"/>
+        <path class="wing wing-near" d="M88 63 C78 46 76 26 86 6 C90 22 95 30 101 34 C99 22 104 12 113 6 C115 26 110 44 99 57"/>
+      </g>
+    </svg>
+  </div>
+  <p class="words"><span>Paz</span><span>שלום</span><span>سلام</span><span>平和</span><span>शांति</span><span>Paix</span><span>мир</span><span>Pace</span><span>Frieden</span></p>
+  <p class="slogan">Spread peace.</p>
+  <p class="pitch">One line of JavaScript that adds a quiet wish for peace to the footer of your website.</p>
+</section>
+
+<section id="install" class="wrap section">
+  <h2>Add it to your site</h2>
+  <div class="builder">
+    <div class="controls">
+      <div class="group">
+        <span class="label" id="l-theme">THEME</span>
+        <div class="opts" role="group" aria-labelledby="l-theme" data-key="theme"></div>
+      </div>
+      <div class="group">
+        <span class="label" id="l-dark">DARK</span>
+        <div class="opts" role="group" aria-labelledby="l-dark" data-key="dark"></div>
+        <span class="hint" id="dark-hint"></span>
+      </div>
+      <div class="group">
+        <span class="label" id="l-style">STYLE</span>
+        <div class="opts" role="group" aria-labelledby="l-style" data-key="style"></div>
+      </div>
+      <div class="group">
+        <span class="label" id="l-link">LINK</span>
+        <div class="opts mono" role="group" aria-labelledby="l-link" data-key="link"></div>
+      </div>
+      <div class="group">
+        <span class="label" id="l-auto">AUTO</span>
+        <div class="opts mono" role="group" aria-labelledby="l-auto" data-key="auto"></div>
+        <span class="hint" id="auto-hint"></span>
+      </div>
+      <div class="group">
+        <label class="label" for="target">TARGET (OPTIONAL)</label>
+        <input id="target" type="text" placeholder="#footer" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+
+    <div class="output">
+      <div class="box">
+        <div class="bar">
+          <span class="label">PREVIEW</span>
+          <button type="button" class="small" id="page-toggle"></button>
+        </div>
+        <div class="preview" id="preview">
+          <div class="preview-rule"></div>
+          <div class="preview-foot" id="preview-foot"></div>
+        </div>
+      </div>
+      <div class="code">
+        <div class="bar">
+          <span class="label">HTML</span>
+          <button type="button" class="copy" id="copy">Copy</button>
+        </div>
+        <pre id="snippet"></pre>
+      </div>
+      <p class="note">Paste it where you want the line to appear: it’s added to the element that holds the script. With <code>data-target</code>, or with <code>data-auto="false"</code> and your own <code>peaceJS()</code> call, the script can go anywhere.</p>
+    </div>
+  </div>
+</section>
+
+<section id="embed" class="wrap section">
+  <h2>On your site</h2>
+  <p class="lede">Two ways it sits in a footer. The symbol shows the words when hovered or tapped.</p>
+  <div class="mocks">
+    <figure>
+      <div class="mock light">
+        <div class="chrome"><span></span><span></span><span></span></div>
+        <div class="lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="mock-foot" id="demo-text"></div>
+      </div>
+      <figcaption><span>Text, on a light site</span><code>data-style="text"</code></figcaption>
+    </figure>
+    <figure>
+      <div class="mock dark">
+        <div class="chrome"><span></span><span></span><span></span></div>
+        <div class="lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="mock-foot" id="demo-symbol"></div>
+      </div>
+      <figcaption><span>Symbol only, on a dark site — hover or tap it</span><code>data-style="symbol"</code></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="options" class="wrap section">
+  <h2>Options</h2>
+  <div class="table">
+    <div class="row"><code>data-theme</code><span class="vals">auto · black · white · red · green · blue</span><span class="desc">Text colour. <code>auto</code> (default) is black, or white on dark pages.</span></div>
+    <div class="row"><code>data-dark</code><span class="vals">background · device</span><span class="desc">How <code>auto</code> goes white: when the colour behind it is dark, or whenever the device is in dark mode.</span></div>
+    <div class="row"><code>data-style</code><span class="vals">text · symbol</span><span class="desc">Ten words, or a single peace sign that reveals them.</span></div>
+    <div class="row"><code>data-target</code><span class="vals">any CSS selector</span><span class="desc">Where to inject. Defaults to the script tag’s parent.</span></div>
+    <div class="row"><code>data-link</code><span class="vals">_blank · _self · false</span><span class="desc">How the line links back here.</span></div>
+    <div class="row"><code>data-auto</code><span class="vals">true · false</span><span class="desc">Turn off and call <code>peaceJS()</code> yourself. It takes an options object, a DOM element or a CSS selector. Got a jQuery object or a list of elements? Pass one element (<code>list[0]</code>) or the selector.</span></div>
+  </div>
+<pre class="example"><code>peaceJS();                          // same as autoloading
+peaceJS('#footer');                 // a selector
+peaceJS(document.querySelector('footer')); // or an element
+peaceJS({ target: '#header', theme: 'blue', style: 'symbol', link: false });</code></pre>
+</section>
+
+<section id="share" class="wrap section last">
+  <div class="share-head">
+    <h2>Sharing peace</h2>
+    <a href="https://github.com/humancopy/peace.js/blob/master/SHARE.md" class="mono-link">from SHARE.md, live</a>
+  </div>
+  <div class="sites" id="sites">
+    <a href="https://symbolika.com"><span>Symbolika</span><span class="host">symbolika.com</span></a>
+    <a href="https://tribu.co.uk"><span>Tribu London</span><span class="host">tribu.co.uk</span></a>
+    <a href="https://humancopy.net"><span>humancopy</span><span class="host">humancopy.net</span></a>
+    <a href="https://humancopy.net/alive"><span>Alive</span><span class="host">humancopy.net/alive</span></a>
+  </div>
+  <p class="cta">Using it? <a href="https://github.com/humancopy/peace.js/blob/master/SHARE.md">Open a pull request</a> and your site shows up here.</p>
+</section>
+
+<footer class="site-foot">
+  <div class="peace-slot"><script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" id="peace-script" async></script></div>
+  <div class="meta">
+    <span>MIT License</span>
+    <a href="https://humancopy.net">humancopy</a>
+    <a href="https://www.npmjs.com/package/peace.js">npm</a>
+    <a href="https://github.com/humancopy/peace.js">GitHub</a>
+  </div>
+</footer>
+
+<script src="app.js?v=dove4"></script>
+</body>
+</html>
