@@ -51,13 +51,19 @@ a:not([href]) {
   position: relative;
   z-index: 2;
 }
-.peace.symbol.show a,
-.peace.symbol:hover a {
+.peace.symbol.show a {
   opacity: 1;
 }
-.peace.symbol.show span,
-.peace.symbol:hover span {
+.peace.symbol.show span {
   opacity: 0;
+}
+@media (hover: hover) {
+  .peace.symbol:hover a {
+    opacity: 1;
+  }
+  .peace.symbol:hover span {
+    opacity: 0;
+  }
 }
 @media (hover: none) {
   .peace.symbol:not(.show) a {

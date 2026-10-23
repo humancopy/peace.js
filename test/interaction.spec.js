@@ -75,6 +75,15 @@ test.describe('touch', () => {
     await staysPut(page, context, urls);
   });
 
+  test('symbol: hover alone doesn\'t reveal the words', async ({page}) => {
+    // iOS counts a tap that reveals content through hover as a hover only, and skips the click that adds .show
+    const peace = await banner(page, 'data-style="symbol"');
+    await peace.locator('span').hover();
+    await page.waitForTimeout(400);
+    await expect(peace.locator('a')).toHaveCSS('opacity', '0');
+    await expect(peace.locator('span')).toHaveCSS('opacity', '1');
+  });
+
   test('text, _self: a tap follows the link', async ({page}) => {
     const peace = await banner(page, 'data-link="_self"');
     await peace.locator('a').tap();
@@ -83,6 +92,13 @@ test.describe('touch', () => {
 });
 
 test.describe('desktop', () => {
+  test('symbol: hovering ☮ reveals the words', async ({page}) => {
+    const peace = await banner(page, 'data-style="symbol"');
+    await peace.locator('span').hover({force: true});
+    await expect(peace.locator('a')).toHaveCSS('opacity', '1');
+    await expect(peace.locator('span')).toHaveCSS('opacity', '0');
+  });
+
   test('symbol, _self: one click on ☮ follows the link', async ({page}) => {
     const peace = await banner(page, 'data-style="symbol" data-link="_self"');
     // Click where the symbol is drawn, whatever sits on top of it

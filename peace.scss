@@ -57,13 +57,22 @@
       z-index: 2;
     }
 
-    &:hover a,
     &.show a {
       opacity: 1;
     }
-    &:hover span,
     &.show span {
       opacity: 0;
+    }
+
+    // Hover reveals the link only with a mouse: on iOS a tap that reveals content
+    // through hover counts as a hover, so the click that adds .show never fires
+    @media (hover: hover) {
+      &:hover a {
+        opacity: 1;
+      }
+      &:hover span {
+        opacity: 0;
+      }
     }
 
     // Touch has no hover: let the first tap reach the symbol to reveal the link
