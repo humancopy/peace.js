@@ -1,0 +1,29 @@
+test/interaction.spec.js
+  s_4e4665adc7f8bf::t_9976fb3e87133c 78-86,95-101
+peace.css
+  s_4e4665adc7f8bf::t_742f5076ab83e7 54,57,60-66
+  s_4e4665adc7f8bf::t_fd430d5a54e9fe 67
+peace.scss
+  s_4e4665adc7f8bf::t_742f5076ab83e7 67-75
+  s_4e4665adc7f8bf::t_202d538f534b6a 76-77
+dist/peace.min.css
+  s_4e4665adc7f8bf::t_12c2fc5488cacd 2
+dist/peace.min.css.map
+  s_4e4665adc7f8bf::t_00ccb512a41c61 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "72aa06db4593d30f6b4f9e4cd1f6719e15850de1",
+  "prompts": {},
+  "sessions": {
+    "s_4e4665adc7f8bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7310c6a6-76cb-43ac-b59b-cf959bfaf3a6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
