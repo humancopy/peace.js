@@ -1,6 +1,6 @@
 {
   "name": "peace.js",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Peace please",
   "main": "peace.js",
   "jsdelivr": "dist/peace.min.js",
