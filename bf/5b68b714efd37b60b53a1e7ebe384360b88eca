@@ -1,0 +1,21 @@
+site/app.js
+  s_5501dd920311b8::t_3181d72b5b9fb2 135,137
+site/style.css
+  s_5501dd920311b8::t_3181d72b5b9fb2 28,33-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bf5b68b714efd37b60b53a1e7ebe384360b88eca",
+  "prompts": {},
+  "sessions": {
+    "s_5501dd920311b8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ed0644ce-810e-4713-9e10-0f2edf93a74e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
