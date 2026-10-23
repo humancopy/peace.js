@@ -25,11 +25,14 @@
     --code-bg: #161616;
     --code-ink: #f2f2f2;
     --code-rule: #2a2a2a;
+    --accent: #7d8cff;
   }
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 body {
   margin: 0;
   font-family: Inter, Helvetica, Arial, sans-serif;

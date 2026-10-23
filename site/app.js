@@ -132,8 +132,9 @@
   function inject() {
     if (typeof peaceJS !== 'function') return;
     var key = [state.theme, state.dark, state.style, state.link, state.page].join();
-    if (key === injected) return;
+    // cancel a pending injection first: switching back to what's shown must not let an older choice land
     clearTimeout(injectTimer);
+    if (key === injected) return;
     injectTimer = setTimeout(function () {
       injected = key;
       var foot = $('preview-foot');
