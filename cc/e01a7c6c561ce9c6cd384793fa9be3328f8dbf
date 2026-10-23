@@ -1,0 +1,19 @@
+site/index.html
+  s_5501dd920311b8::t_32deb981bcd94b 12,171
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cce01a7c6c561ce9c6cd384793fa9be3328f8dbf",
+  "prompts": {},
+  "sessions": {
+    "s_5501dd920311b8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ed0644ce-810e-4713-9e10-0f2edf93a74e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
