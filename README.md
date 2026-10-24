@@ -1,58 +1,96 @@
-# PEACE.JS
+<div align="center">
 
-Add the following piece (~no~ pun intended) of code before the closing ```</body>``` tag on your website to promote **PEACE.JS**:
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/dove-dark.svg">
+  <img src=".github/assets/dove-light.svg" alt="" width="120">
+</picture>
+
+# peace.js
+
+**Spread peace.**<br>
+One line of JavaScript that adds a quiet wish for peace to the footer of your website.
+
+[![npm](https://img.shields.io/npm/v/peace.js?style=flat-square&color=111)](https://www.npmjs.com/package/peace.js)
+[![tests](https://img.shields.io/github/actions/workflow/status/humancopy/peace.js/test.yml?branch=master&style=flat-square&label=tests&color=111)](https://github.com/humancopy/peace.js/actions/workflows/test.yml)
+[![size](https://img.shields.io/badge/gzipped-~1.1%20KB-111?style=flat-square)](dist/peace.min.js)
+[![license](https://img.shields.io/badge/license-MIT-111?style=flat-square)](LICENSE)
+
+Paz · שלום · سلام · 平和 · शांति · Paix · мир · Pace · Frieden
+
+[**Website**](https://peace.humancopy.net) · [Options](#options) · [Share peace](SHARE.md)
+
+</div>
+
+<br>
+
+## Quick start
+
+Paste this before the closing `</body>` tag:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" async></script>
 ```
 
-*You can actually paste it anywhere inside the ```<body>```. It will inject itself at the same DOM level as the ```<script>``` tag.*
+That's it. It injects itself at the same DOM level as the `<script>` tag, so you can paste it anywhere inside the `<body>`. It turns white on dark backgrounds, follows your dark mode toggle, and weighs next to nothing.
 
-## Target
+## Options
 
-By default, **PEACE.JS** will be appeneded to the parent element of the ```<script>``` tag. If you'd like to inject it somewhere else, simply add the `data-target` attribute:
+Everything is a `data-` attribute on the script tag.
+
+| Attribute | Values | Default | |
+| --- | --- | --- | --- |
+| [`data-target`](#target) | any CSS selector | the script's parent | Where the banner goes |
+| [`data-link`](#link) | `_blank`, `_self`, … or `false` | `_blank` | Where the banner links |
+| [`data-theme`](#themes) | `auto` `black` `white` `green` `blue` `red` | `auto` | Color |
+| [`data-dark`](#dark-mode) | `background` `device` | `background` | When `auto` turns white |
+| [`data-style`](#style) | `text` `symbol` | `text` | Words or ☮ |
+| [`data-auto`](#autoloading) | `true` `false` | `true` | Show it on load |
+
+### Target
+
+By default the banner is appended to the parent element of the `<script>` tag. To put it somewhere else, add `data-target`:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-target="#footer" async></script>
 ```
 
-## Link
+### Link
 
-**PEACE.JS** will automatically link the generated peace banner to the project's homepage. By default the link will open in a new window. You can either change it to open in the same window or to not have any link at all (why would you want to do that though is beyond me :smirk:). Possible values are: anything supported by the [a[target]](https://www.w3schools.com/tags/att_a_target.asp) attribute or `false` to disable the link.
+The banner links to the project's homepage and opens in a new window. Change it to open in the same window, or to not link at all (why would you want that is beyond me 😏). Accepts anything the [`a[target]`](https://developer.mozilla.org/docs/Web/HTML/Element/a#target) attribute does, or `false` to disable the link.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-link="_self" async></script>
 ```
 
-## Themes
+### Themes
 
-By default (`auto`) **PEACE.JS** is black, and turns white when the background behind it is dark — so it fits light and dark pages, and follows your site when it switches between them (the device's dark mode, or your own dark mode toggle). To pick a fixed color use the `data-theme` attribute. Possible values are: `auto`, `black`, `white`, `green`, `blue` & `red`.
+By default (`auto`) the banner is black, and turns white when the background behind it is dark. It fits light and dark pages, and follows your site when it switches between them: the device's dark mode, or your own toggle. To pick a fixed color, use `data-theme`:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-theme="blue" async></script>
 ```
 
-## Dark mode
+### Dark mode
 
-With the `auto` theme, the `data-dark` attribute chooses when **PEACE.JS** turns white. Possible values are: `background` (default) to go white when the color behind it is dark, or `device` to go white whenever the device is in dark mode.
+With the `auto` theme, `data-dark` chooses when the banner turns white: `background` (default) when the color behind it is dark, or `device` whenever the device is in dark mode.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-dark="device" async></script>
 ```
 
-## Style
+### Style
 
-By default, **PEACE.JS** will show the word Peace in different languages. If you prefer instead to show a peace symbol, simply add the `data-style="symbol"` attribute to the script tag. Possible values are: `text`, `symbol`
+By default the banner shows the word *Peace* in different languages. Prefer a peace symbol? Use `data-style="symbol"`. On touch screens the first tap reveals the words, the second follows the link.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-style="symbol" async></script>
 ```
 
-## Autoloading
+### Autoloading
 
-You can also disable the automatic activation of the banner by adding the attribute `data-auto="false"` to the script. You can then activate it by calling the ```peaceJS()``` function.
+Add `data-auto="false"` to hold the banner back, then call `peaceJS()` when you're ready.
 
-The ```peaceJS()``` function accepts an optional argument of either a hash of options, a DOM element or a CSS selector. Any option passed to ```peaceJS()``` has precedence over what was defined on the ```<script>``` tag. Got a jQuery object or any other list of elements (NodeList, HTMLCollection, array)? Pass a single element (```$('#footer')[0]```, ```list[0]```) or the selector string.
+`peaceJS()` takes an optional argument: a hash of options, a DOM element or a CSS selector. Options passed to it win over the ones on the `<script>` tag. Got a jQuery object or another list of elements? Pass a single element (`$('#footer')[0]`) or the selector string.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-auto="false" data-theme="green" data-link="_self" async></script>
@@ -64,8 +102,7 @@ peaceJS();
 // Append to #footer in green theme
 peaceJS('#footer');
 
-// Will append to #header, with a blue theme (precedence over green), symbol style
-// and won't link back to the project :(
+// Append to #header, blue theme (wins over green), symbol style, no link back :(
 peaceJS({
   target: '#header',
    theme: 'blue',
@@ -77,13 +114,29 @@ peaceJS({
 
 ## Hosting it yourself
 
-**PEACE.JS** loads its stylesheet from the same place as the script, by swapping `.js` for `.css`: `peace.js` loads `peace.css`, and `peace.min.js` loads `peace.min.css`. The minified files are in `dist/` (`dist/peace.min.js` and `dist/peace.min.css`), which is also what Bower installs. So when you serve the script yourself (or install it with Bower or npm), keep the matching stylesheet next to it, and keep the file named `peace.js` or `peace.min.js` so the script can find its own `<script>` tag. When the script is bundled into another file, or loaded by package name without a file (like `https://cdn.jsdelivr.net/npm/peace.js`), the stylesheet comes from jsDelivr.
+<details>
+<summary>Serve the files from your own domain, or install from npm or Bower</summary>
+
+<br>
+
+**peace.js** loads its stylesheet from the same place as the script, by swapping `.js` for `.css`: `peace.js` loads `peace.css`, and `peace.min.js` loads `peace.min.css`. The minified files are in `dist/`, which is also what Bower installs.
+
+So when you serve the script yourself, keep the matching stylesheet next to it, and keep the file named `peace.js` or `peace.min.js` so the script can find its own `<script>` tag.
+
+When the script is bundled into another file, or loaded by package name without a file (like `https://cdn.jsdelivr.net/npm/peace.js`), the stylesheet comes from jsDelivr.
+
+</details>
 
 ## Development
 
+<details>
+<summary>Build and test</summary>
+
+<br>
+
 `dist/` is built from `peace.js` and `peace.css` with `npm run build`, and committed so Bower can install it. Rebuild it after changing either file.
 
-The tests run **PEACE.JS** in a real browser (Chromium, via [Playwright](https://playwright.dev)), checking the banner's colors on light, dark and see-through pages, every option, and where its stylesheet loads from. They run twice, on the source files and on `dist/`. Other tests check that `dist/` is up to date, and keep `peace.js` under its size budget once minified and gzipped.
+The tests run **peace.js** in a real browser (Chromium, via [Playwright](https://playwright.dev)), checking the banner's colors on light, dark and see-through pages, every option, and where its stylesheet loads from. They run twice, on the source files and on `dist/`. Other tests check that `dist/` is up to date, and keep `peace.js` under its size budget once minified and gzipped.
 
 ```sh
 npm install
@@ -92,6 +145,14 @@ npm run build
 npm test
 ```
 
+</details>
+
 ## Share peace
 
-Using **PEACE.JS**? Make a pull request to be listed [here](SHARE.md).
+Using **peace.js**? Open a pull request to be listed in [SHARE.md](SHARE.md). 🕊️
+
+<br>
+
+<div align="center">
+<sub>MIT · made by <a href="https://humancopy.net">humancopy</a></sub>
+</div>

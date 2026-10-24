@@ -57,8 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
-# Github config
-_config.yml
 # Playwright
 test-results/
 playwright-report/
