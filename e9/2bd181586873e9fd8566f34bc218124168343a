@@ -1,0 +1,23 @@
+.github/assets/dove-dark.svg
+  s_87cae6214b03a7::t_db3afc9e114e78 1-9
+.github/assets/dove-light.svg
+  s_87cae6214b03a7::t_db3afc9e114e78 1-9
+README.md
+  s_87cae6214b03a7::t_8d5197672b35e4 1,3-28,34-38,40-47,49-51,57,59,65,67,73,75,81,83,89,91,93,105,117-128,132-136,139,148-149,152-158
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e92bd181586873e9fd8566f34bc218124168343a",
+  "prompts": {},
+  "sessions": {
+    "s_87cae6214b03a7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e39dcc17-a1f1-45f0-b8ce-ad52e8a0c4a7",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
