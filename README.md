@@ -12,7 +12,7 @@ One line of JavaScript that adds a quiet wish for peace to the footer of your we
 
 [![npm](https://img.shields.io/npm/v/peace.js?style=flat-square&color=111)](https://www.npmjs.com/package/peace.js)
 [![tests](https://img.shields.io/github/actions/workflow/status/humancopy/peace.js/test.yml?branch=master&style=flat-square&label=tests&color=111)](https://github.com/humancopy/peace.js/actions/workflows/test.yml)
-[![size](https://img.shields.io/bundlephobia/minzip/peace.js?style=flat-square&label=gzipped&color=111)](https://bundlephobia.com/package/peace.js)
+[![size](https://img.shields.io/badge/gzipped-~1.1%20KB-111?style=flat-square)](dist/peace.min.js)
 [![license](https://img.shields.io/badge/license-MIT-111?style=flat-square)](LICENSE)
 
 Paz · שלום · سلام · 平和 · शांति · Paix · мир · Pace · Frieden
