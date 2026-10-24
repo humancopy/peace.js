@@ -1,0 +1,19 @@
+package-lock.json
+  s_87cae6214b03a7::t_c506b4f75c9292 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "76e9c00bf3d375707bf1137c62beb4bd916a839a",
+  "prompts": {},
+  "sessions": {
+    "s_87cae6214b03a7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e39dcc17-a1f1-45f0-b8ce-ad52e8a0c4a7",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
