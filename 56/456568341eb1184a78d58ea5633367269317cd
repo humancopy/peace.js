@@ -1,0 +1,21 @@
+site/index.html
+  s_87cae6214b03a7::t_04007209ee3ae6 12,171
+site/style.css
+  s_87cae6214b03a7::t_04007209ee3ae6 68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "56456568341eb1184a78d58ea5633367269317cd",
+  "prompts": {},
+  "sessions": {
+    "s_87cae6214b03a7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e39dcc17-a1f1-45f0-b8ce-ad52e8a0c4a7",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "humancopy <147451+humancopy@users.noreply.github.com>"
+    }
+  }
+}
