@@ -28,7 +28,7 @@ Paz · שלום · سلام · 平和 · शांति · Paix · мир · Pa
 Paste this before the closing `</body>` tag:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.2/dist/peace.min.js" async></script>
 ```
 
 That's it. It injects itself at the same DOM level as the `<script>` tag, so you can paste it anywhere inside the `<body>`. It turns white on dark backgrounds, follows your dark mode toggle, and weighs next to nothing.
@@ -51,7 +51,7 @@ Everything is a `data-` attribute on the script tag.
 By default the banner is appended to the parent element of the `<script>` tag. To put it somewhere else, add `data-target`:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-target="#footer" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.2/dist/peace.min.js" data-target="#footer" async></script>
 ```
 
 ### Link
@@ -59,7 +59,7 @@ By default the banner is appended to the parent element of the `<script>` tag. T
 The banner links to the project's homepage and opens in a new window. Change it to open in the same window, or to not link at all (why would you want that is beyond me 😏). Accepts anything the [`a[target]`](https://developer.mozilla.org/docs/Web/HTML/Element/a#target) attribute does, or `false` to disable the link.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-link="_self" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.2/dist/peace.min.js" data-link="_self" async></script>
 ```
 
 ### Themes
@@ -67,7 +67,7 @@ The banner links to the project's homepage and opens in a new window. Change it 
 By default (`auto`) the banner is black, and turns white when the background behind it is dark. It fits light and dark pages, and follows your site when it switches between them: the device's dark mode, or your own toggle. To pick a fixed color, use `data-theme`:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-theme="blue" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.2/dist/peace.min.js" data-theme="blue" async></script>
 ```
 
 ### Dark mode
@@ -75,7 +75,7 @@ By default (`auto`) the banner is black, and turns white when the background beh
 With the `auto` theme, `data-dark` chooses when the banner turns white: `background` (default) when the color behind it is dark, or `device` whenever the device is in dark mode.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-dark="device" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.2/dist/peace.min.js" data-dark="device" async></script>
 ```
 
 ### Style
@@ -83,7 +83,7 @@ With the `auto` theme, `data-dark` chooses when the banner turns white: `backgro
 By default the banner shows the word *Peace* in different languages. Prefer a peace symbol? Use `data-style="symbol"`. On touch screens the first tap reveals the words, the second follows the link.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-style="symbol" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.2/dist/peace.min.js" data-style="symbol" async></script>
 ```
 
 ### Autoloading
@@ -93,7 +93,7 @@ Add `data-auto="false"` to hold the banner back, then call `peaceJS()` when you'
 `peaceJS()` takes an optional argument: a hash of options, a DOM element or a CSS selector. Options passed to it win over the ones on the `<script>` tag. Got a jQuery object or another list of elements? Pass a single element (`$('#footer')[0]`) or the selector string.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.js" data-auto="false" data-theme="green" data-link="_self" async></script>
+<script src="https://cdn.jsdelivr.net/npm/peace.js@2.0.2/dist/peace.min.js" data-auto="false" data-theme="green" data-link="_self" async></script>
 
 <script>
 // Default behaviour

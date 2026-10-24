@@ -1,7 +1,7 @@
 /**
  * PEACE.js - http://humancopy.net/peace-js.html
  * Peace please, humancopy.net 2017
- * Version 2.0.1
+ * Version 2.0.2
  *
  */
 
@@ -48,8 +48,8 @@ var peaceJS;
       // Load the CSS
       css.rel  = 'stylesheet';
       // from next to the script (peace.js loads peace.css, peace.min.js loads peace.min.css),
-      // or from jsDelivr when bundled or loaded by package name (like /npm/peace.js or /npm/peace.js@2.0.1)
-      css.href = stylesheet != src ? stylesheet : 'https://cdn.jsdelivr.net/npm/peace.js@2.0.1/dist/peace.min.css';
+      // or from jsDelivr when bundled or loaded by package name (like /npm/peace.js or /npm/peace.js@2.0.2)
+      css.href = stylesheet != src ? stylesheet : 'https://cdn.jsdelivr.net/npm/peace.js@2.0.2/dist/peace.min.css';
       document.head.appendChild(css);
 
       paragraph.className = 'peace ' + style + ' ' + theme;
