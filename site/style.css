@@ -65,7 +65,7 @@ nav a { text-decoration: none; min-height: 44px; display: inline-flex; align-ite
 
 /* Hero */
 .hero { padding-top: 96px; padding-bottom: 80px; overflow-x: clip; }
-.tag { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: 14px; margin-bottom: 20px; text-decoration: none; }
+.tag { display: inline-flex; position: relative; z-index: 1; align-items: center; gap: 12px; min-height: 44px; font-size: 14px; margin-bottom: 20px; text-decoration: none; }
 .tag:hover span:last-child { text-decoration: underline; }
 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
 /* Inter's P has ~0.11em of left side bearing; pull it back so it lines up with the text below */
